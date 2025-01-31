@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center">
+                    <span class="font-semibold text-blue-700 text-2xl">Foodie Delight</span>
+                </a>
+
+                <!-- Nav Links -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="index.html"
+                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Home</a>
+                    <a href="cart.html"
+                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Cart</a>
+                    <a href="orders.html"
+                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Orders</a>
+                </div>
+
+                <!-- Authenticated/Unauthenticated Links -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div id="authenticated" class="hidden">
+                        <a href="profile.html"
+                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Profile</a>
+                        <button onclick="handleLogout()"
+                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Logout</button>
+                    </div>
+                    <div id="unauthenticated" class="hidden flex space-x-4">
+                        <a href="login.html"
+                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Login</a>
+                        <a href="registration.html"
+                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center mb-6">Your Cart</h1>
+
+        <div id="cart-items" class="space-y-4 bg-white p-6 shadow-md rounded-lg"></div>
+
+        <div class="mt-6 p-6 bg-white shadow-md rounded-lg">
+            <h2 class="text-xl font-semibold">Total Cost: <span id="total-cost" class="text-green-600">0.00</span> BDT</h2>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="mt-6 p-6 bg-white shadow-md rounded-lg">
+            <h2 class="text-xl font-semibold mb-4">Select Payment Method</h2>
+            <div class="space-y-2">
+                <label class="flex items-center space-x-2">
+                    <input type="radio" name="payment" value="cod" checked class="form-radio text-blue-500">
+                    <span>Cash on Delivery</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                    <input type="radio" name="payment" value="paypal" class="form-radio text-blue-500">
+                    <span>PayPal</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                    <input type="radio" name="payment" value="card" class="form-radio text-blue-500">
+                    <span>Credit/Debit Card</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Checkout Button -->
+        <div class="mt-6 text-center">
+            <button id="checkout-btn" class="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition">
+                Checkout
+            </button>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+    <script src="cart.js"></script>
+
+</body>
+</html>

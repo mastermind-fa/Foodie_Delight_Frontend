@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center">
+                    <span class="font-semibold text-blue-700 text-2xl">Foodie Delight</span>
+                </a>
+
+                <!-- Nav Links -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="index.html"
+                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Home</a>
+                    <a href="cart.html"
+                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Cart</a>
+                    <a href="orders.html"
+                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Orders</a>
+                </div>
+
+                <!-- Authenticated/Unauthenticated Links -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div id="authenticated" class="hidden">
+                        <a href="profile.html"
+                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Profile</a>
+                        <button onclick="handleLogout()"
+                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Logout</button>
+                    </div>
+                    <div id="unauthenticated" class="hidden flex space-x-4">
+                        <a href="login.html"
+                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Login</a>
+                        <a href="registration.html"
+                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+  <!-- Food details section -->
+  <div class="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-8">
+    <div class="flex">
+      <img id="food-image" class="w-48 h-48 object-cover rounded-lg" alt="Food Image" />
+      <div class="ml-6">
+        <h2 id="food-name" class="text-3xl font-bold text-gray-800"></h2>
+        <p id="food-description" class="mt-2 text-gray-600"></p>
+        <p id="food-price" class="mt-4 text-xl font-semibold text-gray-800"></p>
+        <p id="food-popularity" class="mt-2 text-gray-500"></p>
+        <div class="mt-4">
+          <label for="quantity" class="block text-gray-700">Quantity:</label>
+          <input id="quantity" type="number" min="1" value="1" class="border-2 border-gray-300 rounded-lg p-2">
+          <button onclick="addToCart()" class="bg-green-500 text-white px-6 py-2 rounded-lg mt-4">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="mt-8">
+      <h3 class="text-2xl font-semibold text-gray-800">Reviews</h3>
+      <div id="review-list" class="mt-4"></div>
+
+      <!-- Submit Review Form -->
+      <div class="mt-8">
+        <h4 class="text-xl font-semibold text-gray-700">Submit Your Review</h4>
+        <form id="review-form" onsubmit="submitReview(event)">
+          <div class="mt-2">
+            <label for="rating" class="block text-gray-700">Rating (1 to 5)</label>
+            <input type="number" id="rating" min="1" max="5" class="border-2 border-gray-300 rounded-lg p-2 w-full" required>
+          </div>
+          <div class="mt-2">
+            <label for="comment" class="block text-gray-700">Comment</label>
+            <textarea id="comment" class="border-2 border-gray-300 rounded-lg p-2 w-full" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg mt-4">Submit Review</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script src="foodDetails.js"></script>
+</body>
+</html>
