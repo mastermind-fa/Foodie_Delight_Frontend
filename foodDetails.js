@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM fully loaded and parsed');
 
-    const apiBaseUrl = 'https://you-fashion-backend.vercel.app/api';
+    const apiBaseUrl = 'https://foodie-delight-backend-eta.vercel.app//api';
     const urlParams = new URLSearchParams(window.location.search);
     const foodId = urlParams.get('id'); // Get the food ID from the URL
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Set image
         if (food.image) {
-            foodImage.src = `https://you-fashion-backend.vercel.app${food.image}`;
+            foodImage.src = `https://foodie-delight-backend-eta.vercel.app/${food.image}`;
             foodImage.alt = food.name;
         }
 

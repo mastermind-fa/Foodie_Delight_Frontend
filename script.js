@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const apiUrl = "https://you-fashion-backend.vercel.app/api/food-items/";
+  const apiUrl = "https://foodie-delight-backend-eta.vercel.app//api/food-items/";
   const swiperContainer = document.querySelector(".mySwiper");
 
   fetch(apiUrl)
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const slideContent = `
                     <div class="w-[80%]">
-                        <img src="https://you-fashion-backend.vercel.app${item.image}" class="w-full" alt="${item.name}" />
+                        <img src="https://foodie-delight-backend-eta.vercel.app/${item.image}" class="w-full" alt="${item.name}" />
                         <div class="flex text-[22px] mt-4 font-semibold justify-between">
                             <h5 class="text-[#111111]">${item.name}</h5>
                             <h5 class="text-[#f22e3e]">$${item.price}</h5>
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const apiUrl = "https://you-fashion-backend.vercel.app/api/food-items/";
+  const apiUrl = "https://foodie-delight-backend-eta.vercel.app//api/food-items/";
   const swiperContainer = document.querySelector(".mySwiper2");
 
   fetch(apiUrl)
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const slideContent = `
                     <div class="w-[80%]">
-                        <img src="https://you-fashion-backend.vercel.app${item.image}" class="w-full" alt="${item.name}" />
+                        <img src="https://foodie-delight-backend-eta.vercel.app/${item.image}" class="w-full" alt="${item.name}" />
                         <div class="flex text-[22px] mt-4 font-semibold justify-between">
                             <h5 class="text-[#111111]">${item.name}</h5>
                             <h5 class="text-[#f22e3e]">$${item.price}</h5>
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const apiUrl = "https://you-fashion-backend.vercel.app/api/food-items/";
+  const apiUrl = "https://foodie-delight-backend-eta.vercel.app//api/food-items/";
   const swiperContainer = document.querySelector(".mySwiper3");
 
   fetch(apiUrl)
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const slideContent = `
                     <div class="w-[80%]">
-                        <img src="https://you-fashion-backend.vercel.app${item.image}" class="w-full" alt="${item.name}" />
+                        <img src="https://foodie-delight-backend-eta.vercel.app/${item.image}" class="w-full" alt="${item.name}" />
                         <div class="flex text-[22px] mt-4 font-semibold justify-between">
                             <h5 class="text-[#111111]">${item.name}</h5>
                             <h5 class="text-[#f22e3e]">$${item.price}</h5>

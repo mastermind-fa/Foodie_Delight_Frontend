@@ -1,4 +1,4 @@
-const apiUrl = "https://you-fashion-backend.vercel.app/api/cart/";
+const apiUrl = "https://foodie-delight-backend-eta.vercel.app//api/cart/";
 const token = localStorage.getItem("token"); // Retrieve token from localStorage
 
 // Fetch cart items from the API
@@ -34,7 +34,7 @@ function renderCartItems(cartItems) {
     row.className = "border-b hover:bg-gray-100";
     row.innerHTML = `
             <td class="p-3">
-                <img src="https://you-fashion-backend.vercel.app${item.food_item.image}" alt="${
+                <img src="https://foodie-delight-backend-eta.vercel.app/${item.food_item.image}" alt="${
       item.food_item.name
     }" class="w-16 rounded">
             </td>
@@ -119,7 +119,7 @@ function calculateTotalAmount(cartItems) {
 async function handleCheckout() {
   try {
     const response = await fetch(
-      "https://you-fashion-backend.vercel.app/payment/create_payment/",
+      "https://foodie-delight-backend-eta.vercel.app//payment/create_payment/",
       {
         method: "POST",
         headers: {
