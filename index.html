@@ -1,158 +1,1425 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Foodie Delight</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navbar Start -->
+    <header
+      id="nav-main"
+      class="w-[100%] bg-white z-[9999] sticky duration-500 top-0 left-0"
+    >
+      <nav
+        class="lg:w-[95%] mx-auto py-[10px] flex justify-between items-center"
+      >
+      <a href="index.html"><h2 class="text-3xl font-bold text-[#f22e3e] font-serif">Foodie Delight</h2></a>
+        <div class="flex gap-10">
+          <ul
+            class="hidden lg:flex gap-[3.5rem] font-[600] z-999 text-[18px] uppercase"
+          >
+            <li class="border-b-2 pb-2 border-[#f22e3e]">
+              <a href="/index.html" class="cursor-pointer text-[#f22e3e]"
+                >Home</a
+              >
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="/shop.html" class="hover:text-[#f22e3e]">Shop</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="" class="hover:text-[#f22e3e]">About</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="" class="hover:text-[#f22e3e]">Blog</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="" class="hover:text-[#f22e3e]">Contact</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="profile.html" class="hover:text-[#f22e3e]">Account</a>
+            </li>
+          </ul>
+          <!-- Mobile Menu Items Start -->
+          <div
+            id="nav-items"
+            class="absolute hidden top-0 left-0 w-full h-[100vh] bg-white"
+          >
+            <div class="py-3 flex justify-between pe-1 border-b-2">
+              <a href="index.html"><h2 class="text-3xl font-bold text-[#f22e3e] font-serif">Foodie Delight</h2></a>
+              <button
+                id="menu-close"
+                class="text-[30px] cursor-pointer font-bold"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <ul
+              class="flex h-[100%] w-full mt-16 px-4 flex-col z-999 font-[600] gap-10 text-[18px] uppercase"
+            >
+              <li>
+                <a href="/index.html" class="cursor-pointer text-[#f22e3e]"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="/shop.html" class="">Shop</a>
+              </li>
+              <li>
+                <a href="" class="">About</a>
+              </li>
+              <li>
+                <a href="" class="">Blog</a>
+              </li>
+              <li>
+                <a href="">Contact</a>
+              </li>
+              <li>
+                <a href="/profile.html">Account</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Mobile Menu Items End -->
+          <!-- Search Box Start -->
+          <div
+            id="search-trigger"
+            class="absolute hidden top-0 flex-col left-0 flex py-20 items-center w-full bg-[#fbb200] h-[100vh]"
+          >
+            <div class="p-3 border flex gap-3 rounded-full items-center">
+              <input
+                type="text"
+                class="py-2 bg-transparent text-white outline-none w-[260px] px-2"
+                placeholder="What are you looking for?"
+                name=""
+                id=""
+              />
+              <i
+                class="fa-solid text-white cursor-pointer text-[20px] fa-search"
+              ></i>
+            </div>
+            <div class="py-7">
+              <button
+                id="search-close"
+                class="text-[22px] cursor-pointer border-2 border-white text-white px-3 py-1 rounded-full font-bold"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+          <!-- Search Box End -->
+          <div class="flex mt-1 gap-7">
+            <i
+              id="search-open"
+              class="fa-solid hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-magnifying-glass"
+            ></i>
+            <a href="cart.html"
+              ><i
+                class="fa-brands hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-opencart"
+              ></i
+            ></a>
+          </div>
+          <div class="block text-[24px] lg:hidden">
+            <i
+              id="menu-open"
+              class="fa-solid hover:text-[#f22e3e] pr-2 text-black fa-bars cursor-pointer"
+            ></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Navbar Start -->
+    <main>
+      <!-- Home Banner Part-1 Start -->
+      <section class="w-full">
+        <div
+          class="lg:w-[100%] w-[95%] mx-auto gap-2 lg:flex justify-between items-center"
+        >
+          <!-- Left Content -->
+          <div
+            class="lg:w-[45%] w-full lg:ps-[2.5%] w-full flex flex-col items-center lg:items-start"
+          >
+            <h1
+              class="text-[30px] sm:text-[40px] lg:text-[54px] xl:text-[64px] text-center lg:text-left font-bold xl:leading-[4.3rem] sm:leading-[3.5rem] lg:leading-[4rem] tracking-tight xl:tracking-normal"
+            >
+              Handmade, With an Extra Pinch of
+              <span class="text-[#f22e3e]">Love</span>
+            </h1>
+            <h5
+              class="sm:text-[18px] text-[15px] lg:text-[20px] xl:text-[24px] text-center lg:text-left text-[#777] font-[500] leading-[22px] sm:leading-[1.5] my-4 lg:my-8"
+            >
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </h5>
+            <button>
+              <a
+                href="Shop.html"
+                class="flex justify-center gap-1.5 rounded-full text-white text-[16px] lg:text-[20px] font-semibold px-7 py-3.5 uppercase bg-[#fbb200] items-center duration-300 hover:bg-[#f22e3e]"
+              >
+                <i class="fa-brands fa-opencart"></i> <span>Order Now</span>
+              </a>
+            </button>
+          </div>
+          <!-- Right Content -->
+          <div
+            class="lg:w-[55%] my-10 lg:my-0 flex lg:block justify-center items-center w-full lg:relative overflow-hidden"
+          >
+            <div
+              class="overflow-hidden lg:block hidden transform translate-x-[60%] xl:w-[700px] flex rounded-full bg-[#fbb200] justify-start items-center justify-center w-[500px] h-[500px] xl:h-[700px]"
+            >
+              <img
+                src="images/homeImages/buy-one-get.png"
+                class="w-[20%]"
+                alt=""
+              />
+            </div>
+            <img
+              src="images/homeImages/banner-img.png"
+              class="lg:w-[40%] px-5 lg:px-0 xl:w-[60%] top-[20%] xl:top-[10%] lg:absolute left-[20%] xl:left-[10%]"
+              alt=""
+            />
+            <img
+              src="images/homeImages/banner-img-bottom.png"
+              class="w-[30%] bottom-0 absolute lg:block hidden right-[10%]"
+              alt=""
+            />
+            <img
+              src="images/homeImages/onion.png"
+              alt=""
+              class="absolute lg:block hidden bottom-[5%] left-[5%]"
+            />
+          </div>
+        </div>
+      </section>
 
-</head>
+      <!-- Home Banner Part-1 End -->
+      <!-- Home Banner Part-2 Start -->
+      <section class="w-full">
+        <div
+          class="lg:flex items-center lg:py-0 lg:relative justify-start mx-auto w-[90%] gap-24"
+        >
+          <img
+            src="images/homeImages/daily-fresh.png"
+            class="lg:block hidden w-[40%]"
+            alt=""
+          />
+          <div class="flex flex-col gap-2 sm:gap-4">
+            <h1
+              class="text-[21px] sm:text-[28px] text-center lg:text-left font-semibold"
+            >
+              Daily fresh and always tasty
+            </h1>
+            <p
+              class="text-[#777] text-center lg:text-left lg:text-[18px] text-[15px] font-[500]"
+            >
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority haved
+            </p>
+          </div>
+          <img
+            src="images/homeImages/daily-fresh-vacter.png"
+            alt
+            class="absolute lg:block hidden w-[150px] bottom-0 right-0"
+            alt="Image"
+          />
+        </div>
+      </section>
+      <!-- Home Banner Part-2 End -->
+      <!-- Popular Dishes Start -->
+      <section class="w-full">
+        <div class="max-w-[95%] my-2 mt-20 lg:my-24 mx-auto">
+          <div class="flex gap-4 lg:py-2.5 justify-start items-center">
+            <h4 class="text-[22px] text-[#f22e3e] font-semibold">
+              Popular Dishes
+            </h4>
+            <div class="border py-0 px-10 border-[#f22e3e]"></div>
+          </div>
+          <h1 class="text-[25px] lg:text-[40px] leading-[55px] font-[700]">
+            Browse Our Menu
+          </h1>
+          <div class="relative lg:block hidden py-10 mt-5">
+            <swiper-container
+              class="mySwiper"
+              autoplay-delay="2500"
+              autoplay-disable-on-interaction="false"
+              space-between="30"
+              slides-per-view="3"
+            >
+              <!-- <swiper-slide
+                class="border-2 rounded-3xl cursor-pointer flex items-center py-10 flex-col"
+              >
+                <div class="w-[80%]">
+                  <img
+                    src="images/popolarDishes/pizza-1.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex text-[22px] mt-4 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Shrimp Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$35.00</h5>
+                  </div>
+                  <div class="my-4">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
+                  <p class="text-left text-[18px] font-[500] text-[#777]">
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] px-5 uppercase py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 font-semibold">Order Now</span>
+                  </button>
+                </div>
+              </swiper-slide>
+              <swiper-slide
+                class="border-2 rounded-3xl cursor-pointer flex items-center py-10 flex-col"
+              >
+                <div class="w-[80%]">
+                  <img
+                    src="images/popolarDishes/pizza-2.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex text-[22px] mt-4 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Seafood Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$65.00</h5>
+                  </div>
+                  <div class="my-4">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
+                  <p class="text-left text-[18px] font-[500] text-[#777]">
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] px-5 uppercase py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 font-semibold">Order Now</span>
+                  </button>
+                </div>
+              </swiper-slide>
+              <swiper-slide
+                class="border-2 rounded-3xl cursor-pointer flex items-center py-10 flex-col"
+              >
+                <div class="w-[80%]">
+                  <img
+                    src="images/popolarDishes/pizza-3.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex text-[22px] mt-4 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Cheese Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$45.00</h5>
+                  </div>
+                  <div class="my-4">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
+                  <p class="text-left text-[18px] font-[500] text-[#777]">
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] px-5 uppercase py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 font-semibold">Order Now</span>
+                  </button>
+                </div>
+              </swiper-slide>
+              <swiper-slide
+                class="border-2 rounded-3xl cursor-pointer flex items-center py-10 flex-col"
+              >
+                <div class="w-[80%]">
+                  <img
+                    src="images/popolarDishes/pizza-4.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex text-[22px] mt-4 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Cheese Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$25.00</h5>
+                  </div>
+                  <div class="my-4">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
+                  <p class="text-left text-[18px] font-[500] text-[#777]">
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] px-5 uppercase py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 font-semibold">Order Now</span>
+                  </button>
+                </div>
+              </swiper-slide> -->
+            </swiper-container>
+          </div>
+          <div class="relative lg:hidden hidden md:block py-10 mt-0 lg:mt-5">
+            <swiper-container
+              class="mySwiper2"
+              autoplay-delay="2500"
+              autoplay-disable-on-interaction="false"
+              space-between="30"
+              slides-per-view="2"
+            >
+              <!-- <swiper-slide
+                class="border-2 rounded-xl sm:rounded-3xl cursor-pointer flex items-center py-5 sm:py-10 flex-col"
+              >
+                <div class="sm:w-[80%] w-[90%]">
+                  <img
+                    src="images/popolarDishes/pizza-1.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex sm:text-[22px] text-[16px] sm:mt-4 mt-2 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Shrimp Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$35.00</h5>
+                  </div>
+                  <div class="sm:my-4 my-2">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
+                  <p
+                    class="text-left text-[13px] sm:text-[18px] font-[500] text-[#777]"
+                  >
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] sm:px-5 px-2.5 uppercase py-1.5 sm:py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] sm:text-[24px] text-[16px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 text-[13px] font-semibold"
+                      >Order Now</span
+                    >
+                  </button>
+                </div>
+              </swiper-slide>
+              <swiper-slide
+                class="border-2 rounded-xl sm:rounded-3xl cursor-pointer flex items-center py-5 sm:py-10 flex-col"
+              >
+                <div class="sm:w-[80%] w-[90%]">
+                  <img
+                    src="images/popolarDishes/pizza-2.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex sm:text-[22px] text-[16px] sm:mt-4 mt-2 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Seafood Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$65.00</h5>
+                  </div>
+                  <div class="sm:my-4 my-2">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
+                  <p
+                    class="text-left text-[13px] sm:text-[18px] font-[500] text-[#777]"
+                  >
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] sm:px-5 px-2.5 uppercase py-1.5 sm:py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] sm:text-[24px] text-[16px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 text-[13px] font-semibold"
+                      >Order Now</span
+                    >
+                  </button>
+                </div>
+              </swiper-slide>
+              <swiper-slide
+                class="border-2 rounded-xl sm:rounded-3xl cursor-pointer flex items-center py-5 sm:py-10 flex-col"
+              >
+                <div class="sm:w-[80%] w-[90%]">
+                  <img
+                    src="images/popolarDishes/pizza-3.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex sm:text-[22px] text-[16px] sm:mt-4 mt-2 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Cheese Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$45.00</h5>
+                  </div>
+                  <div class="sm:my-4 my-2">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
 
-<body class="bg-gray-100">
-    <!-- Navbar -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <a href="#" class="flex items-center">
-                    <span class="font-semibold text-blue-700 text-2xl">Foodie Delight</span>
+                  <p
+                    class="text-left text-[13px] sm:text-[18px] font-[500] text-[#777]"
+                  >
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] sm:px-5 px-2.5 uppercase py-1.5 sm:py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] sm:text-[24px] text-[16px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 text-[13px] font-semibold"
+                      >Order Now</span
+                    >
+                  </button>
+                </div>
+              </swiper-slide>
+              <swiper-slide
+                class="border-2 rounded-xl sm:rounded-3xl cursor-pointer flex items-center py-5 sm:py-10 flex-col"
+              >
+                <div class="sm:w-[80%] w-[90%]">
+                  <img
+                    src="images/popolarDishes/pizza-3.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex sm:text-[22px] text-[16px] sm:mt-4 mt-2 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Cheese Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$25.00</h5>
+                  </div>
+                  <div class="sm:my-4 my-2">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
+                  <p
+                    class="text-left text-[13px] sm:text-[18px] font-[500] text-[#777]"
+                  >
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] sm:px-5 px-2.5 uppercase py-1.5 sm:py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] sm:text-[24px] text-[16px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 text-[13px] font-semibold"
+                      >Order Now</span
+                    >
+                  </button>
+                </div>
+              </swiper-slide> -->
+            </swiper-container>
+          </div>
+          <div class="relative md:hidden block py-5 lg:py-10 mt-0 lg:mt-5">
+            <swiper-container
+              class="mySwiper3"
+              autoplay-delay="2500"
+              autoplay-disable-on-interaction="false"
+              space-between="30"
+              slides-per-view="1"
+            >
+              <!-- <swiper-slide
+                class="border-2 rounded-xl sm:rounded-3xl cursor-pointer flex items-center py-5 sm:py-10 flex-col"
+              >
+                <div class="sm:w-[80%] w-[90%]">
+                  <img
+                    src="images/popolarDishes/pizza-1.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex sm:text-[22px] text-[16px] sm:mt-4 mt-2 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Shrimp Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$35.00</h5>
+                  </div>
+                  <div class="sm:my-4 my-2">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
+                  <p
+                    class="text-left text-[13px] sm:text-[18px] font-[500] text-[#777]"
+                  >
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] sm:px-5 px-2.5 uppercase py-1.5 sm:py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] sm:text-[24px] text-[16px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 text-[13px] font-semibold"
+                      >Order Now</span
+                    >
+                  </button>
+                </div>
+              </swiper-slide>
+              <swiper-slide
+                class="border-2 rounded-xl sm:rounded-3xl cursor-pointer flex items-center py-5 sm:py-10 flex-col"
+              >
+                <div class="sm:w-[80%] w-[90%]">
+                  <img
+                    src="images/popolarDishes/pizza-2.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex sm:text-[22px] text-[16px] sm:mt-4 mt-2 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Seafood Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$65.00</h5>
+                  </div>
+                  <div class="sm:my-4 my-2">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
+                  <p
+                    class="text-left text-[13px] sm:text-[18px] font-[500] text-[#777]"
+                  >
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] sm:px-5 px-2.5 uppercase py-1.5 sm:py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] sm:text-[24px] text-[16px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 text-[13px] font-semibold"
+                      >Order Now</span
+                    >
+                  </button>
+                </div>
+              </swiper-slide>
+              <swiper-slide
+                class="border-2 rounded-xl sm:rounded-3xl cursor-pointer flex items-center py-5 sm:py-10 flex-col"
+              >
+                <div class="sm:w-[80%] w-[90%]">
+                  <img
+                    src="images/popolarDishes/pizza-3.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex sm:text-[22px] text-[16px] sm:mt-4 mt-2 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Cheese Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$45.00</h5>
+                  </div>
+                  <div class="sm:my-4 my-2">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
+
+                  <p
+                    class="text-left text-[13px] sm:text-[18px] font-[500] text-[#777]"
+                  >
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] sm:px-5 px-2.5 uppercase py-1.5 sm:py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] sm:text-[24px] text-[16px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 text-[13px] font-semibold"
+                      >Order Now</span
+                    >
+                  </button>
+                </div>
+              </swiper-slide>
+              <swiper-slide
+                class="border-2 rounded-xl sm:rounded-3xl cursor-pointer flex items-center py-5 sm:py-10 flex-col"
+              >
+                <div class="sm:w-[80%] w-[90%]">
+                  <img
+                    src="images/popolarDishes/pizza-3.png"
+                    class="w-full"
+                    alt=""
+                  />
+                  <div
+                    class="flex sm:text-[22px] text-[16px] sm:mt-4 mt-2 font-semibold justify-between"
+                  >
+                    <h5 class="text-[#111111]">Cheese Pizza</h5>
+                    <h5 class="text-[#f22e3e]">$25.00</h5>
+                  </div>
+                  <div class="sm:my-4 my-2">
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                    <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                  </div>
+                  <p
+                    class="text-left text-[13px] sm:text-[18px] font-[500] text-[#777]"
+                  >
+                    All the Lorem Ipsum generators on to Internet tend to repeat
+                  </p>
+                  <button
+                    class="mt-3 rounded-full bg-[#fbb200] sm:px-5 px-2.5 uppercase py-1.5 sm:py-3 text-white"
+                  >
+                    <i
+                      class="fa-brands hover:text-[#f22e3e] sm:text-[24px] text-[16px] cursor-pointer fa-opencart"
+                    ></i>
+                    <span class="ps-1.5 text-[13px] font-semibold"
+                      >Order Now</span
+                    >
+                  </button>
+                </div>
+              </swiper-slide> -->
+            </swiper-container>
+          </div>
+        </div>
+      </section>
+      <!-- Popular Dishes End -->
+      <!-- Our Story Start -->
+      <section class="w-full mt-10 mb-10">
+        <div
+          class="max-w-[95%] mx-auto flex flex-col px-0 md:px-3 lg:px-0 lg:flex-row justify-between"
+        >
+          <div
+            class="w-full lg:w-[55%] p-7 lg:p-0 order-2 lg:order-1 flex justify-center items-center relative"
+          >
+            <img src="images/ourStory/our-story.png" class="w-full" alt="" />
+            <img
+              src="images/ourStory/onion.png"
+              class="absolute bottom-[2%] lg:w-auto w-[70px] z-[0] left-[2%]"
+              alt=""
+            />
+          </div>
+          <div
+            class="w-full lg:w-[40%] mb-2 sm:mb-10 lg:mb-0 order-1 lg:order-2 px-2"
+          >
+            <div class="flex gap-4 py-2.5 justify-start items-center">
+              <h4 class="text-[22px] text-[#f22e3e] font-semibold">
+                Our Story
+              </h4>
+              <div class="border py-0 px-10 border-[#f22e3e]"></div>
+            </div>
+            <h1 class="text-[25px] lg:text-[40px] my-3 lg:my-4 font-bold">
+              The Megabbluster Pizza Has Excellent Of Quality Foods
+            </h1>
+            <p
+              class="text-[15px] lg:text-[18px] mb-4 sm:mb-10 text-[#777777] font-[500] leading-[22px] lg:leading-[32px]"
+            >
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged.
+            </p>
+            <button>
+              <a
+                href="About.html"
+                class="flex justify-center gap-1.5 rounded-full text-white text-[16px] lg:text-[20px] font-semibold px-7 py-3.5 uppercase bg-[#fbb200] duration-300 hover:bg-[#f22e3e] items-center"
+              >
+                <span>Read More</span><i class="fa-solid fa-chevron-right"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Our Story End -->
+      <!-- Our Strength Start -->
+      <section class="w-full relative bg-[#fffaed] py-10 md:py-20">
+        <div class="max-w-[95%] mx-auto">
+          <div class="flex gap-4 lg:py-2.5 justify-start items-center">
+            <h4 class="text-[22px] text-[#f22e3e] font-semibold">
+              Our Strength
+            </h4>
+            <div class="border py-0 px-10 border-[#f22e3e]"></div>
+          </div>
+          <h1 class="text-[25px] lg:text-[40px] leading-[55px] font-[700]">
+            Why We Are The Best?
+          </h1>
+          <div
+            class="w-full my-5 md:my-0 md:mt-20 flex-wrap gap-6 md:flex justify-between"
+          >
+            <div class="lg:w-[22%] mt-10 md:mt-0 md:w-[44%]">
+              <img
+                src="images/ourStrength/all-kinds-of-foods.png"
+                class="xl:w-[62px] mb-2 w-[58px] h-[58px] xl:h-[62px]"
+                alt=""
+              />
+              <h3 class="xl:text-[24px] text-[22px] font-semibold my-3">
+                All kinds of Foods
+              </h3>
+              <p class="xl:text-[18px] text-[16px] text-[#777] font-[500]">
+                Lorem Ipsum is simply dummy text of the printing and type
+                setting industry.
+              </p>
+            </div>
+            <div class="lg:w-[22%] mt-10 md:mt-0 md:w-[44%]">
+              <img
+                src="images/ourStrength/fresh-foods.png"
+                class="xl:w-[62px] mb-2 w-[58px] h-[58px] xl:h-[62px]"
+                alt=""
+              />
+              <h3 class="xl:text-[24px] text-[22px] font-semibold my-3">
+                Fresh Foods
+              </h3>
+              <p class="xl:text-[18px] text-[16px] text-[#777] font-[500]">
+                Lorem Ipsum is simply dummy text of the printing and type
+                setting industry.
+              </p>
+            </div>
+            <div class="lg:w-[22%] mt-10 md:mt-0 md:w-[44%]">
+              <img
+                src="images/ourStrength/best-taste.png"
+                class="xl:w-[62px] mb-2 w-[58px] h-[58px] xl:h-[62px]"
+                alt=""
+              />
+              <h3 class="xl:text-[24px] text-[22px] font-semibold my-3">
+                Best Taste
+              </h3>
+              <p class="xl:text-[18px] text-[16px] text-[#777] font-[500]">
+                Lorem Ipsum is simply dummy text of the printing and type
+                setting industry.
+              </p>
+            </div>
+            <div class="lg:w-[22%] mt-10 md:mt-0 md:w-[44%]">
+              <img
+                src="images/ourStrength/all-kinds-of-foods.png"
+                class="xl:w-[62px] mb-2 w-[58px] h-[58px] xl:h-[62px]"
+                alt=""
+              />
+              <h3 class="xl:text-[24px] text-[22px] font-semibold my-3">
+                On Time Delivery
+              </h3>
+              <p class="xl:text-[18px] text-[16px] text-[#777] font-[500]">
+                Lorem Ipsum is simply dummy text of the printing and type
+                setting industry.
+              </p>
+            </div>
+          </div>
+        </div>
+        <img
+          src="images/ourStrength/strength-vacter.png"
+          class="absolute md:block hidden right-0 w-[25%] top-20"
+          alt=""
+        />
+      </section>
+      <!-- Our Strength End -->
+      <!-- Feedback Start -->
+      <section class="w-full relative py-10 md:py-20">
+        <img src="images/testimonials/leaf.png" alt="" class="w-[100px]" />
+        <div class="max-w-[95%] px-2 md:px-0 mx-auto">
+          <div class="flex gap-4 lg:py-2.5 justify-start items-center">
+            <h4 class="text-[22px] text-[#f22e3e] font-semibold">
+              Customer Feedback
+            </h4>
+            <div class="border py-0 px-10 border-[#f22e3e]"></div>
+          </div>
+          <h1 class="text-[25px] lg:text-[40px] leading-[55px] font-[700]">
+            Client Testimonials
+          </h1>
+          <swiper-container
+            class="mySwiper mt-10 relative lg:block hidden py-10"
+            space-between="40"
+            slides-per-view="4"
+          >
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-5 py-6 xl:px-10 xl:py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-1.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Johan Doe</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] xl:leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-2 lg:my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-5 py-6 xl:px-10 xl:py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-2.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Alex Saanu</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] xl:leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-5 py-6 xl:px-10 xl:py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-3.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Jona Leoner</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] xl:leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-5 py-6 xl:px-10 xl:py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-4.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Takar Bowa</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] xl:leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-5 py-6 xl:px-10 xl:py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-4.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Takar Bowa</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] xl:leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+          </swiper-container>
+          <swiper-container
+            class="mySwiper relative lg:hidden hidden md:block py-10 mt-0 lg:mt-5"
+            space-between="40"
+            slides-per-view="2"
+          >
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-10 py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-1.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Johan Doe</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-10 py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-2.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Alex Saanu</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-10 py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-3.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Jona Leoner</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-10 py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-4.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Takar Bowa</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+          </swiper-container>
+          <swiper-container
+            class="mySwiper relative md:hidden block py-5 lg:py-10 mt-0 lg:mt-5"
+            space-between="40"
+            slides-per-view="1"
+          >
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-10 py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-1.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Johan Doe</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-10 py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-2.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Alex Saanu</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-10 py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-3.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Jona Leoner</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+            <swiper-slide
+              class="border-2 rounded-3xl cursor-pointer px-10 py-12 flex items-center flex-col"
+            >
+              <img
+                src="images/testimonials/client-4.jpg"
+                class="w-[100px] h-[100px] rounded-full"
+                alt=""
+              />
+              <h3 class="text-[20px] font-semibold my-4">Takar Bowa</h3>
+              <p
+                class="text-center text-[18px] text-[#777777] font-[500] leading-[32px]"
+              >
+                “Lorem Ipsum is simply dummy text of the print book. It has
+                survived not only five centuries, but also the leap”
+              </p>
+              <div class="my-4">
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+                <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
+              </div>
+            </swiper-slide>
+          </swiper-container>
+        </div>
+      </section>
+      <!-- Feedback End -->
+      <!-- Popular Dishes Start -->
+      <section class="w-full py-10 relative">
+        <div class="max-w-[95%] mx-auto flex lg:flex-row flex-col gap-10">
+          <div class="lg:w-[45%] w-full">
+            <div class="flex gap-4 lg:py-2.5 justify-start items-center">
+              <h4 class="text-[22px] text-[#f22e3e] font-semibold">
+                Popular Dishes
+              </h4>
+              <div class="border py-0 px-10 border-[#f22e3e]"></div>
+            </div>
+            <h1 class="text-[25px] lg:text-[40px] leading-[55px] font-[700]">
+              Browse Our Menu
+            </h1>
+            <form
+              id="contactForm"
+              class="md:flex justify-between mt-5 xl:mt-10 gap-6 xl:gap-10 md:flex-wrap"
+            >
+              <div class="md:w-[45%] w-full mb-7 md:mb-0">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name*"
+                  class="border-[1px] outline-none rounded-lg border-[#e4ded9] text-[#777777] w-full px-4 py-3"
+                />
+              </div>
+              <div class="md:w-[45%] w-full mb-7 md:mb-0">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email*"
+                  class="border-[1px] outline-none rounded-lg border-[#e4ded9] text-[#777777] w-full px-4 py-3"
+                />
+              </div>
+              <div class="md:w-[45%] w-full mb-7 md:mb-0">
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Phone*"
+                  class="border-[1px] outline-none rounded-lg border-[#e4ded9] text-[#777777] w-full px-4 py-3"
+                />
+              </div>
+              <input
+                type="time"
+                name="time"
+                placeholder="Time*"
+                class="border-[1px] outline-none rounded-lg border-[#e4ded9] text-[#777777] md:w-[45%] mb-7 md:mb-0 w-full px-4 py-3"
+              />
+              <input
+                type="date"
+                name="date"
+                placeholder="Date*"
+                class="border-[1px] outline-none rounded-lg border-[#e4ded9] text-[#777777] md:w-[45%] mb-7 md:mb-0 w-full px-4 py-3"
+              />
+              <input
+                type="text"
+                name="guest"
+                placeholder="Guest*"
+                class="border-[1px] outline-none rounded-lg border-[#e4ded9] text-[#777777] md:w-[45%] mb-7 md:mb-0 w-full px-4 py-3"
+              />
+              <button
+                type="submit"
+                class="px-[30px] py-[12px] rounded-full uppercase bg-[#fbb200] text-[16px] md:text-[20px] text-white font-semibold"
+              >
+                Book Now
+              </button>
+            </form>
+          </div>
+          <div class="w-full lg:w-[55%] relative lg:py-2 lg:px-16">
+            <img
+              src="images/reservation/reservation-pizza.png"
+              class="sticky w-full z-[999]"
+              alt=""
+            />
+            <img
+              src="images/reservation/leaf-1.png"
+              class="absolute w-[18%] top-[5%] left-0"
+              alt=""
+            />
+            <img
+              src="images/reservation/leaf-2.png"
+              class="absolute w-[15%] top-[23%] left-0"
+              alt=""
+            />
+            <img
+              src="images/reservation/leaf-3.png"
+              class="absolute w-[15%] md:block hidden top-[37%] z-0 left-[3.5%]"
+              alt=""
+            />
+          </div>
+        </div>
+        <img
+          src="images/reservation/book-jamun.png"
+          class="absolute bottom-[8%] w-[11%] right-0"
+          alt=""
+        />
+        <img
+          src="images/reservation/book-leaf.png"
+          class="absolute top-0 w-[18%] right-0"
+          alt=""
+        />
+      </section>
+      <!-- Popular Dishes End -->
+      <!-- Footer Start -->
+      <footer class="w-full">
+        <div class="bg-[#fffaed] py-16 w-full">
+          <div class="w-[95%] mx-auto">
+            <div
+              class="md:flex w-full gap-5 justify-between font-semibold tracking-[1px]"
+            >
+              <div class="md:w-[25%]  mb-10 md:mb-0 w-full">
+                <h6 class="text-[18px] mb-5 uppercase leading-[30px]">
+                  Information
+                </h6>
+                <ul class="flex flex-col text-[#777777] gap-5">
+                  <li><a href="">Home</a></li>
+                  <li><a href="">Blog</a></li>
+                  <li><a href="">About Us</a></li>
+                  <li><a href="">Menu</a></li>
+                  <li><a href="">Contact us</a></li>
+                </ul>
+              </div>
+              <div class="md:w-[25%] mb-10 md:mb-0 w-full">
+                <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
+                  Top Items
+                </h6>
+                <ul class="flex flex-col text-[#777777] gap-5">
+                  <li><a href="">Pepperoni</a></li>
+                  <li><a href="">Swiss Mushroom</a></li>
+                  <li><a href="">Barbeque Chicken</a></li>
+                  <li><a href="">Vegetarian</a></li>
+                  <li><a href="">Ham & Cheese</a></li>
+                </ul>
+              </div>
+              <div class="md:w-[25%] mb-10 md:mb-0 w-full">
+                <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
+                  Others
+                </h6>
+                <ul class="flex flex-col text-[#777777] gap-5">
+                  <li><a href="">Checkout</a></li>
+                  <li><a href="">Cart</a></li>
+                  <li><a href="">Product</a></li>
+                  <li><a href="">Locations</a></li>
+                  <li><a href="">Legal</a></li>
+                </ul>
+              </div>
+              <div class="md:w-[25%] mb-2  md:mb-0 w-full">
+                <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
+                  Social Media
+                </h6>
+                <div class="flex my-6 gap-4">
+                  <a href="">
+                    <img
+                      src="images/footer/facebook.png"
+                      class="w-[40px] h-[40px]"
+                      alt=""
+                  /></a>
+                  <a href="">
+                    <img
+                      src="images/footer/pinterest.png"
+                      class="w-[40px] h-[40px]"
+                      alt=""
+                  /></a>
+                  <a href="">
+                    <img
+                      src="images/footer/twitter.png"
+                      class="w-[40px] h-[40px]"
+                      alt=""
+                  /></a>
+                  <a href="">
+                    <img
+                      src="images/footer/instagram.png"
+                      class="w-[40px] h-[40px]"
+                      alt=""
+                    />
+                  </a>
+                </div>
+                <p class="text-[#777777]">
+                  Signup and get exclusive offers and coupon codes
+                </p>
+                <button
+                  class="uppercase text-white my-4 md:my-7 px-5 py-3 text-[16px] md:text-[18px] rounded-full bg-[#fbb200]"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </div>
+            <div class="py-3 md:py-5 md:flex">
+              <div
+                class="flex w-full mb-5 md:mb-0 text-[14px] md:text-[16px] md:w-[75%] font-semibold text-[#777777] items-center"
+              >
+                <a href="" class="md:pe-6 pe-2 border-r border-[#777777]"
+                  >Privacy Policy</a
+                >
+                <a href="" class="md:px-6 px-2 border-r border-[#777777]"
+                  >Refund Policy</a
+                >
+                <a href="" class="md:px-6 px-2 border-r border-[#777777]"
+                  >Cookie Policy</a
+                >
+                <a href="" class="md:px-6 px-2">Terms & Conditions</a>
+              </div>
+              <div class="flex md:w-[25%] w-full gap-2 lg:gap-4">
+                <a href="">
+                  <img src="images/footer/app-stor.png" class="h-[40px]" alt=""
+                /></a>
+                <a href="">
+                  <img
+                    src="images/footer/google-play.png"
+                    class="h-[40px]"
+                    alt=""
+                  />
                 </a>
-
-                <!-- Nav Links -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="index.html"
-                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Home</a>
-                    <a href="cart.html"
-                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Cart</a>
-                    <a href="orders.html"
-                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Orders</a>
-                </div>
-
-                <!-- Authenticated/Unauthenticated Links -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <div id="authenticated" class="hidden">
-                        <a href="profile.html"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Profile</a>
-                        <button onclick="handleLogout()"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Logout</button>
-                    </div>
-                    <div id="unauthenticated" class="hidden flex space-x-4">
-                        <a href="login.html"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Login</a>
-                        <a href="registration.html"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Register</a>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </nav>
-
-    <!-- Hero Section with Full-Screen Bootstrap Carousel -->
-    <section class="hero-section">
-        <!-- Bootstrap Carousel -->
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-                    <img src="images/hero1.jpg" class="d-block w-100 h-screen object-cover" alt="Slide 1">
-                    <div class="carousel-caption d-none d-md-block bg-black bg-opacity-50 p-6 rounded-lg">
-                        <h1 class="text-5xl font-bold mb-4 text-white">Welcome to Foodie Delight</h1>
-                        <p class="text-xl text-white">Experience the finest culinary delights from around the world.</p>
-                    </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="carousel-item">
-                    <img src="images/hero2.jpg" class="d-block w-100 h-screen object-cover" alt="Slide 2">
-                    <div class="carousel-caption d-none d-md-block bg-black bg-opacity-50 p-6 rounded-lg">
-                        <h1 class="text-5xl font-bold mb-4 text-white">Fresh & Delicious</h1>
-                        <p class="text-xl text-white">Taste the freshness in every bite. Farm-to-table goodness!</p>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="carousel-item">
-                    <img src="images/hero3.jpg" class="d-block w-100 h-screen object-cover" alt="Slide 3">
-                    <div class="carousel-caption d-none d-md-block bg-black bg-opacity-50 p-6 rounded-lg">
-                        <h1 class="text-5xl font-bold mb-4 text-white">Satisfy Your Cravings</h1>
-                        <p class="text-xl text-white">Craving something special? We’ve got it all covered.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Carousel Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+        <div
+          class="p-5 md:p-10 text-center text-[14px] md:text-[18px] font-semibold"
+        >
+        <a href="">
+          © 2024 Foodie Delight. All Rights Reserved by
+          <a href="" class="text-[#f22e3e]">Farhana Alam</a></a>
+      </div>
         </div>
-    </section>
-
-    <!-- Product Listing Section -->
-    <section id="products" class="max-w-6xl mx-auto px-4 py-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-8">Our Menu</h2>
-
-        <!-- Filter, Search & Sort Options -->
-        <div class="flex flex-wrap gap-4 mb-8">
-            <!-- Category Filter -->
-            <select id="filter-category" class="p-2 border rounded-lg">
-                <option value="">Filter by Category</option>
-
-            </select>
-            <!-- Sort Options -->
-            <select id="sort-by" class="p-2 border rounded-lg">
-                <option value="">Sort by</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-                <option value="popularity-asc">Popularity: Low to High</option>
-                <option value="popularity-desc">Popularity: High to Low</option>
-            </select>
-            <!-- Search Bar -->
-            <input type="text" id="search-bar" class="p-2 border rounded-lg w-full md:w-1/3"
-                placeholder="Search for dishes...">
-            <button id="search-btn"
-                class="bg-blue-500 text-white px-4 rounded-r-lg hover:bg-blue-600 transition duration-300">
-                Search
-            </button>
-
-
-        </div>
-
-        <!-- Food List -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="food-list">
-            <!-- Food cards will be dynamically inserted here -->
-        </div>
-        <section class="mt-10">
-            <h2 class="text-2xl font-bold mb-4">🔥 Specials</h2>
-            <div id="specials-list" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-        </section>
-
-    </section>
-
-
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <p>&copy; 2025 Foodie Delight. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- JavaScript -->
-    <script src="auth.js"></script>
+      </footer>
+      <!-- Footer End -->
+    </main>
+    <script
+      src="https://kit.fontawesome.com/1da2bcf95c.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script src="app.js"></script>
     <script src="script.js"></script>
-
-</body>
-
+  </body>
 </html>

@@ -3,85 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    
+    <title>Foodie Delight | Shopping Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
-    <!-- Navbar -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <a href="#" class="flex items-center">
-                    <span class="font-semibold text-blue-700 text-2xl">Foodie Delight</span>
-                </a>
 
-                <!-- Nav Links -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="index.html"
-                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Home</a>
-                    <a href="cart.html"
-                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Cart</a>
-                    <a href="orders.html"
-                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Orders</a>
-                </div>
-
-                <!-- Authenticated/Unauthenticated Links -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <div id="authenticated" class="hidden">
-                        <a href="profile.html"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Profile</a>
-                        <button onclick="handleLogout()"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Logout</button>
-                    </div>
-                    <div id="unauthenticated" class="hidden flex space-x-4">
-                        <a href="login.html"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Login</a>
-                        <a href="registration.html"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Register</a>
-                    </div>
-                </div>
+    <!-- Navbar Start -->
+    <header
+      id="nav-main"
+      class="w-[100%] bg-white z-[9999] sticky duration-500 top-0 left-0"
+    >
+      <nav
+        class="lg:w-[95%] mx-auto py-[10px] flex justify-between items-center"
+      >
+      <a href="index.html"><h2 class="text-3xl font-bold text-[#f22e3e] font-serif">Foodie Delight</h2></a>
+        <div class="flex gap-10">
+          <ul
+            class="hidden lg:flex gap-[3.5rem] font-[600] z-999 text-[18px] uppercase"
+          >
+            <li class="border-b-2 pb-2 border-[#f22e3e]">
+              <a href="/index.html" class="cursor-pointer text-[#f22e3e]"
+                >Home</a
+              >
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="/shop.html" class="hover:text-[#f22e3e]">Shop</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="" class="hover:text-[#f22e3e]">About</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="" class="hover:text-[#f22e3e]">Blog</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="" class="hover:text-[#f22e3e]">Contact</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="profile.html" class="hover:text-[#f22e3e]">Account</a>
+            </li>
+          </ul>
+          <!-- Mobile Menu Items Start -->
+          <div
+            id="nav-items"
+            class="absolute hidden top-0 left-0 w-full h-[100vh] bg-white"
+          >
+            <div class="py-3 flex justify-between pe-1 border-b-2">
+              <a href="index.html"><h2 class="text-3xl font-bold text-[#f22e3e] font-serif">Foodie Delight</h2></a>
+              <button
+                id="menu-close"
+                class="text-[30px] cursor-pointer font-bold"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
             </div>
-        </div>
-    </nav>
-
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold text-center mb-6">Your Cart</h1>
-
-        <div id="cart-items" class="space-y-4 bg-white p-6 shadow-md rounded-lg"></div>
-
-        <div class="mt-6 p-6 bg-white shadow-md rounded-lg">
-            <h2 class="text-xl font-semibold">Total Cost: <span id="total-cost" class="text-green-600">0.00</span> BDT</h2>
-        </div>
-
-        <!-- Payment Methods -->
-        <div class="mt-6 p-6 bg-white shadow-md rounded-lg">
-            <h2 class="text-xl font-semibold mb-4">Select Payment Method</h2>
-            <div class="space-y-2">
-                <label class="flex items-center space-x-2">
-                    <input type="radio" name="payment" value="cod" checked class="form-radio text-blue-500">
-                    <span>Cash on Delivery</span>
-                </label>
-                <label class="flex items-center space-x-2">
-                    <input type="radio" name="payment" value="paypal" class="form-radio text-blue-500">
-                    <span>PayPal</span>
-                </label>
-                <label class="flex items-center space-x-2">
-                    <input type="radio" name="payment" value="card" class="form-radio text-blue-500">
-                    <span>Credit/Debit Card</span>
-                </label>
+            <ul
+              class="flex h-[100%] w-full mt-16 px-4 flex-col z-999 font-[600] gap-10 text-[18px] uppercase"
+            >
+              <li>
+                <a href="/index.html" class="cursor-pointer text-[#f22e3e]"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="/shop.html" class="">Shop</a>
+              </li>
+              <li>
+                <a href="" class="">About</a>
+              </li>
+              <li>
+                <a href="" class="">Blog</a>
+              </li>
+              <li>
+                <a href="">Contact</a>
+              </li>
+              <li>
+                <a href="/account.html">Account</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Mobile Menu Items End -->
+          <!-- Search Box Start -->
+          <div
+            id="search-trigger"
+            class="absolute hidden top-0 flex-col left-0 flex py-20 items-center w-full bg-[#fbb200] h-[100vh]"
+          >
+            <div class="p-3 border flex gap-3 rounded-full items-center">
+              <input
+                type="text"
+                class="py-2 bg-transparent text-white outline-none w-[260px] px-2"
+                placeholder="What are you looking for?"
+                name=""
+                id=""
+              />
+              <i
+                class="fa-solid text-white cursor-pointer text-[20px] fa-search"
+              ></i>
             </div>
+            <div class="py-7">
+              <button
+                id="search-close"
+                class="text-[22px] cursor-pointer border-2 border-white text-white px-3 py-1 rounded-full font-bold"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+          <!-- Search Box End -->
+          <div class="flex mt-1 gap-7">
+            <i
+              id="search-open"
+              class="fa-solid hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-magnifying-glass"
+            ></i>
+            <a href="cart.html"
+              ><i
+                class="fa-brands hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-opencart"
+              ></i
+            ></a>
+          </div>
+          <div class="block text-[24px] lg:hidden">
+            <i
+              id="menu-open"
+              class="fa-solid hover:text-[#f22e3e] pr-2 text-black fa-bars cursor-pointer"
+            ></i>
+          </div>
         </div>
+      </nav>
+    </header>
+    <!-- Navbar Start -->
 
-        <!-- Checkout Button -->
-        <div class="mt-6 text-center">
-            <button id="checkout-btn" class="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition">
-                Checkout
-            </button>
+    <div class="container mx-auto py-10 px-4">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Shopping Cart</h2>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="p-3">Image</th>
+                        <th class="p-3">Food Name</th>
+                        <th class="p-3">Price</th>
+                        <th class="p-3">Quantity</th>
+                        <th class="p-3">Total</th>
+                        <th class="p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr class="border-b hover:bg-gray-100">
+                        <td class="p-3"><img src="images/popolarDishes/pizza-1.png" alt="Food" class="w-16 rounded"></td>
+                        <td class="p-3">Delicious Burger</td>
+                        <td class="p-3">$10.00</td>
+                        <td class="p-3 flex items-center gap-2">
+                            <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">-</button>
+                            <span class="px-3">1</span>
+                            <button class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600">+</button>
+                        </td>
+                        <td class="p-3">$10.00</td>
+                        <td class="p-3">
+                            <button class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">Remove</button>
+                        </td>
+                    </tr> -->
+                    <!-- Repeat similar rows for other items -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="flex justify-between items-center mt-6 p-4 bg-white shadow-lg rounded-lg">
+            <h3 class="text-2xl font-semibold">Total Amount:</h3>
+            <p class="text-xl font-bold text-green-600">$00.00</p>
+        </div>
+        
+        <div class="mt-6 flex justify-end">
+            <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition">Proceed to Checkout</button>
         </div>
     </div>
-    <script src="auth.js"></script>
+
+
+    <!-- Footer Start -->
+    <footer class="w-full">
+        <div class="bg-[#fffaed] py-16 w-full">
+          <div class="w-[95%] mx-auto">
+            <div
+              class="md:flex w-full gap-5 justify-between font-semibold tracking-[1px]"
+            >
+              <div class="md:w-[25%]  mb-10 md:mb-0 w-full">
+                <h6 class="text-[18px] mb-5 uppercase leading-[30px]">
+                  Information
+                </h6>
+                <ul class="flex flex-col text-[#777777] gap-5">
+                  <li><a href="">Home</a></li>
+                  <li><a href="">Blog</a></li>
+                  <li><a href="">About Us</a></li>
+                  <li><a href="">Menu</a></li>
+                  <li><a href="">Contact us</a></li>
+                </ul>
+              </div>
+              <div class="md:w-[25%] mb-10 md:mb-0 w-full">
+                <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
+                  Top Items
+                </h6>
+                <ul class="flex flex-col text-[#777777] gap-5">
+                  <li><a href="">Pepperoni</a></li>
+                  <li><a href="">Swiss Mushroom</a></li>
+                  <li><a href="">Barbeque Chicken</a></li>
+                  <li><a href="">Vegetarian</a></li>
+                  <li><a href="">Ham & Cheese</a></li>
+                </ul>
+              </div>
+              <div class="md:w-[25%] mb-10 md:mb-0 w-full">
+                <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
+                  Others
+                </h6>
+                <ul class="flex flex-col text-[#777777] gap-5">
+                  <li><a href="">Checkout</a></li>
+                  <li><a href="">Cart</a></li>
+                  <li><a href="">Product</a></li>
+                  <li><a href="">Locations</a></li>
+                  <li><a href="">Legal</a></li>
+                </ul>
+              </div>
+              <div class="md:w-[25%] mb-2  md:mb-0 w-full">
+                <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
+                  Social Media
+                </h6>
+                <div class="flex my-6 gap-4">
+                  <a href="">
+                    <img
+                      src="images/footer/facebook.png"
+                      class="w-[40px] h-[40px]"
+                      alt=""
+                  /></a>
+                  <a href="">
+                    <img
+                      src="images/footer/pinterest.png"
+                      class="w-[40px] h-[40px]"
+                      alt=""
+                  /></a>
+                  <a href="">
+                    <img
+                      src="images/footer/twitter.png"
+                      class="w-[40px] h-[40px]"
+                      alt=""
+                  /></a>
+                  <a href="">
+                    <img
+                      src="images/footer/instagram.png"
+                      class="w-[40px] h-[40px]"
+                      alt=""
+                    />
+                  </a>
+                </div>
+                <p class="text-[#777777]">
+                  Signup and get exclusive offers and coupon codes
+                </p>
+                <button
+                  class="uppercase text-white my-4 md:my-7 px-5 py-3 text-[16px] md:text-[18px] rounded-full bg-[#fbb200]"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </div>
+            <div class="py-3 md:py-5 md:flex">
+              <div
+                class="flex w-full mb-5 md:mb-0 text-[14px] md:text-[16px] md:w-[75%] font-semibold text-[#777777] items-center"
+              >
+                <a href="" class="md:pe-6 pe-2 border-r border-[#777777]"
+                  >Privacy Policy</a
+                >
+                <a href="" class="md:px-6 px-2 border-r border-[#777777]"
+                  >Refund Policy</a
+                >
+                <a href="" class="md:px-6 px-2 border-r border-[#777777]"
+                  >Cookie Policy</a
+                >
+                <a href="" class="md:px-6 px-2">Terms & Conditions</a>
+              </div>
+              <div class="flex md:w-[25%] w-full gap-2 lg:gap-4">
+                <a href="">
+                  <img src="images/footer/app-stor.png" class="h-[40px]" alt=""
+                /></a>
+                <a href="">
+                  <img
+                    src="images/footer/google-play.png"
+                    class="h-[40px]"
+                    alt=""
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="p-5 md:p-10 text-center text-[14px] md:text-[18px] font-semibold"
+        >
+        <a href="">
+          © 2024 Foodie Delight. All Rights Reserved by
+          <a href="" class="text-[#f22e3e]">Farhana Alam</a></a>
+      </div>
+        </div>
+      </footer>
+      <!-- Footer End -->
+
+      <script
+      src="https://kit.fontawesome.com/1da2bcf95c.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script src="app.js"></script>
     <script src="cart.js"></script>
 
 </body>

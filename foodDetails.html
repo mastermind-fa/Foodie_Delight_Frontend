@@ -1,90 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food Details</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100">
-    <!-- Navbar -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <a href="#" class="flex items-center">
-                    <span class="font-semibold text-blue-700 text-2xl">Foodie Delight</span>
-                </a>
 
-                <!-- Nav Links -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="index.html"
-                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Home</a>
-                    <a href="cart.html"
-                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Cart</a>
-                    <a href="orders.html"
-                        class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Orders</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie Delight | Food Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar Start -->
+    <header
+      id="nav-main"
+      class="w-[100%] bg-white z-[9999] sticky duration-500 top-0 left-0"
+    >
+      <nav
+        class="lg:w-[95%] mx-auto py-[10px] flex justify-between items-center"
+      >
+      <a href="index.html"><h2 class="text-3xl font-bold text-[#f22e3e] font-serif">Foodie Delight</h2></a>
+        <div class="flex gap-10">
+          <ul
+            class="hidden lg:flex gap-[3.5rem] font-[600] z-999 text-[18px] uppercase"
+          >
+            <li class="border-b-2 pb-2 border-[#f22e3e]">
+              <a href="/index.html" class="cursor-pointer text-[#f22e3e]"
+                >Home</a
+              >
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="/shop.html" class="hover:text-[#f22e3e]">Shop</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="" class="hover:text-[#f22e3e]">About</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="" class="hover:text-[#f22e3e]">Blog</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="" class="hover:text-[#f22e3e]">Contact</a>
+            </li>
+            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
+              <a href="profile.html" class="hover:text-[#f22e3e]">Account</a>
+            </li>
+          </ul>
+          <!-- Mobile Menu Items Start -->
+          <div
+            id="nav-items"
+            class="absolute hidden top-0 left-0 w-full h-[100vh] bg-white"
+          >
+            <div class="py-3 flex justify-between pe-1 border-b-2">
+              <a href="index.html"><h2 class="text-3xl font-bold text-[#f22e3e] font-serif">Foodie Delight</h2></a>
+              <button
+                id="menu-close"
+                class="text-[30px] cursor-pointer font-bold"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <ul
+              class="flex h-[100%] w-full mt-16 px-4 flex-col z-999 font-[600] gap-10 text-[18px] uppercase"
+            >
+              <li>
+                <a href="/index.html" class="cursor-pointer text-[#f22e3e]"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="/shop.html" class="">Shop</a>
+              </li>
+              <li>
+                <a href="" class="">About</a>
+              </li>
+              <li>
+                <a href="" class="">Blog</a>
+              </li>
+              <li>
+                <a href="">Contact</a>
+              </li>
+              <li>
+                <a href="/account.html">Account</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Mobile Menu Items End -->
+          <!-- Search Box Start -->
+          <div
+            id="search-trigger"
+            class="absolute hidden top-0 flex-col left-0 flex py-20 items-center w-full bg-[#fbb200] h-[100vh]"
+          >
+            <div class="p-3 border flex gap-3 rounded-full items-center">
+              <input
+                type="text"
+                class="py-2 bg-transparent text-white outline-none w-[260px] px-2"
+                placeholder="What are you looking for?"
+                name=""
+                id=""
+              />
+              <i
+                class="fa-solid text-white cursor-pointer text-[20px] fa-search"
+              ></i>
+            </div>
+            <div class="py-7">
+              <button
+                id="search-close"
+                class="text-[22px] cursor-pointer border-2 border-white text-white px-3 py-1 rounded-full font-bold"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+          <!-- Search Box End -->
+          <div class="flex mt-1 gap-7">
+            <i
+              id="search-open"
+              class="fa-solid hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-magnifying-glass"
+            ></i>
+            <a href="cart.html"
+              ><i
+                class="fa-brands hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-opencart"
+              ></i
+            ></a>
+          </div>
+          <div class="block text-[24px] lg:hidden">
+            <i
+              id="menu-open"
+              class="fa-solid hover:text-[#f22e3e] pr-2 text-black fa-bars cursor-pointer"
+            ></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Navbar Start -->
+
+    <div class="container mx-auto py-10 px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-lg shadow-lg animate-fadeIn">
+            <!-- Food Image -->
+            <div>
+                <img src="" alt="Food"
+                    class="w-full rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+            </div>
+            <!-- Food Details -->
+            <div>
+                <h2 class="text-3xl font-bold text-gray-800">Delicious Food Name</h2>
+                <p class="text-green-500 font-medium mt-2">Category: <span class="text-gray-700">Burger</span></p>
+                <p class="text-lg font-bold text-gray-800 mt-2">Price: <span
+                        class="line-through text-red-500">$59.00</span> <span class="text-green-600">$49.00</span></p>
+                <p class="text-gray-600 mt-3">This is a mouth-watering burger made with premium ingredients, ensuring a
+                    delicious taste with every bite. Perfect for any meal of the day!</p>
+                <div class="flex items-center gap-2 mt-3">
+                    <label for="quantity" class="text-gray-700">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1"
+                        class="w-16 p-2 border rounded-md">
+                </div>
+                <div class="flex gap-4 mt-5">
+                    <button class="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition">Add to
+                        Favourites</button>
+                    <button class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition">Add to
+                        Cart</button>
                 </div>
 
-                <!-- Authenticated/Unauthenticated Links -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <div id="authenticated" class="hidden">
-                        <a href="profile.html"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Profile</a>
-                        <button onclick="handleLogout()"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Logout</button>
+                <h3 class="text-2xl font-semibold mt-6">Rate & Submit Review</h3>
+                <div class="mt-2">
+                    <label for="rating" class="block text-gray-700">Rating (1 to 5)</label>
+                    <input type="number" id="rating" min="1" max="5"
+                        class="border-2 border-gray-300 rounded-lg p-2 w-full" required>
+                </div>
+                <textarea class="w-full p-3 border rounded-md mt-3" rows="4"
+                    placeholder="Write your review here..."></textarea>
+                <button class="bg-blue-500 text-white px-6 py-2 mt-3 rounded-lg hover:bg-blue-600 transition" onclick="submitReview()">Submit
+                    Review</button>
+            </div>
+        </div>
+
+        <!-- Customer Reviews -->
+        <h3 class="text-2xl font-semibold mt-10 text-gray-800">Customer Reviews</h3>
+        <div class="mt-6 space-y-4">
+            <div class="bg-white p-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1">
+                <h4 class="font-bold text-gray-800">John Doe</h4>
+                <div class="flex text-yellow-500">★★★★☆</div>
+                <p class="text-gray-600">Amazing taste! The best burger I've ever had. Will definitely order again.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1">
+                <h4 class="font-bold text-gray-800">Jane Smith</h4>
+                <div class="flex text-yellow-500">★★★★★</div>
+                <p class="text-gray-600">Absolutely delicious! The quality of the ingredients really shines through.</p>
+            </div>
+        </div>
+
+        <!-- Similar Products -->
+        <h3 class="text-2xl font-semibold mt-10 text-gray-800">Similar Products</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+            <div class="bg-white p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                <img src="images/popolarDishes/pizza-1.png" alt="Similar Food" class="w-full rounded-md">
+                <h4 class="text-lg font-semibold mt-3">Food Name</h4>
+                <p class="text-green-600 font-medium">$39.00</p>
+                <div class="flex items-center gap-2 mt-2">
+                    <label for="similar-quantity" class="text-gray-700">Quantity:</label>
+                    <input type="number" id="similar-quantity" name="similar-quantity" min="1" value="1"
+                        class="w-16 p-2 border rounded-md">
+                </div>
+                <button class="bg-green-500 text-white px-6 py-2 mt-2 rounded-lg hover:bg-green-600 transition">Add to Cart</button>
+            </div>
+            <!-- Repeat similar product cards -->
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    <footer class="w-full">
+        <div class="bg-[#fffaed] py-16 w-full">
+            <div class="w-[95%] mx-auto">
+                <div class="md:flex w-full gap-5 justify-between font-semibold tracking-[1px]">
+                    <div class="md:w-[25%]  mb-10 md:mb-0 w-full">
+                        <h6 class="text-[18px] mb-5 uppercase leading-[30px]">
+                            Information
+                        </h6>
+                        <ul class="flex flex-col text-[#777777] gap-5">
+                            <li><a href="">Home</a></li>
+                            <li><a href="">Blog</a></li>
+                            <li><a href="">About Us</a></li>
+                            <li><a href="">Menu</a></li>
+                            <li><a href="">Contact us</a></li>
+                        </ul>
                     </div>
-                    <div id="unauthenticated" class="hidden flex space-x-4">
-                        <a href="login.html"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Login</a>
-                        <a href="registration.html"
-                            class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 font-medium">Register</a>
+                    <div class="md:w-[25%] mb-10 md:mb-0 w-full">
+                        <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
+                            Top Items
+                        </h6>
+                        <ul class="flex flex-col text-[#777777] gap-5">
+                            <li><a href="">Pepperoni</a></li>
+                            <li><a href="">Swiss Mushroom</a></li>
+                            <li><a href="">Barbeque Chicken</a></li>
+                            <li><a href="">Vegetarian</a></li>
+                            <li><a href="">Ham & Cheese</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:w-[25%] mb-10 md:mb-0 w-full">
+                        <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
+                            Others
+                        </h6>
+                        <ul class="flex flex-col text-[#777777] gap-5">
+                            <li><a href="">Checkout</a></li>
+                            <li><a href="">Cart</a></li>
+                            <li><a href="">Product</a></li>
+                            <li><a href="">Locations</a></li>
+                            <li><a href="">Legal</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:w-[25%] mb-2  md:mb-0 w-full">
+                        <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
+                            Social Media
+                        </h6>
+                        <div class="flex my-6 gap-4">
+                            <a href="">
+                                <img src="images/footer/facebook.png" class="w-[40px] h-[40px]" alt="" /></a>
+                            <a href="">
+                                <img src="images/footer/pinterest.png" class="w-[40px] h-[40px]" alt="" /></a>
+                            <a href="">
+                                <img src="images/footer/twitter.png" class="w-[40px] h-[40px]" alt="" /></a>
+                            <a href="">
+                                <img src="images/footer/instagram.png" class="w-[40px] h-[40px]" alt="" />
+                            </a>
+                        </div>
+                        <p class="text-[#777777]">
+                            Signup and get exclusive offers and coupon codes
+                        </p>
+                        <button
+                            class="uppercase text-white my-4 md:my-7 px-5 py-3 text-[16px] md:text-[18px] rounded-full bg-[#fbb200]">
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
+                <div class="py-3 md:py-5 md:flex">
+                    <div
+                        class="flex w-full mb-5 md:mb-0 text-[14px] md:text-[16px] md:w-[75%] font-semibold text-[#777777] items-center">
+                        <a href="" class="md:pe-6 pe-2 border-r border-[#777777]">Privacy Policy</a>
+                        <a href="" class="md:px-6 px-2 border-r border-[#777777]">Refund Policy</a>
+                        <a href="" class="md:px-6 px-2 border-r border-[#777777]">Cookie Policy</a>
+                        <a href="" class="md:px-6 px-2">Terms & Conditions</a>
+                    </div>
+                    <div class="flex md:w-[25%] w-full gap-2 lg:gap-4">
+                        <a href="">
+                            <img src="images/footer/app-stor.png" class="h-[40px]" alt="" /></a>
+                        <a href="">
+                            <img src="images/footer/google-play.png" class="h-[40px]" alt="" />
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </nav>
-
-  <!-- Food details section -->
-  <div class="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-8">
-    <div class="flex">
-      <img id="food-image" class="w-48 h-48 object-cover rounded-lg" alt="Food Image" />
-      <div class="ml-6">
-        <h2 id="food-name" class="text-3xl font-bold text-gray-800"></h2>
-        <p id="food-description" class="mt-2 text-gray-600"></p>
-        <p id="food-price" class="mt-4 text-xl font-semibold text-gray-800"></p>
-        <p id="food-popularity" class="mt-2 text-gray-500"></p>
-        <div class="mt-4">
-          <label for="quantity" class="block text-gray-700">Quantity:</label>
-          <input id="quantity" type="number" min="1" value="1" class="border-2 border-gray-300 rounded-lg p-2">
-          <button onclick="addToCart()" class="bg-green-500 text-white px-6 py-2 rounded-lg mt-4">Add to Cart</button>
+        <div class="p-5 md:p-10 text-center text-[14px] md:text-[18px] font-semibold">
+            <a href="">
+                © 2024 Foodie Delight. All Rights Reserved by
+                <a href="" class="text-[#f22e3e]">Farhana Alam</a></a>
         </div>
-      </div>
-    </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
 
-    <!-- Reviews Section -->
-    <div class="mt-8">
-      <h3 class="text-2xl font-semibold text-gray-800">Reviews</h3>
-      <div id="review-list" class="mt-4"></div>
+    <script src="https://kit.fontawesome.com/1da2bcf95c.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script src="foodDetails.js"></script>
 
-      <!-- Submit Review Form -->
-      <div class="mt-8">
-        <h4 class="text-xl font-semibold text-gray-700">Submit Your Review</h4>
-        <form id="review-form" onsubmit="submitReview(event)">
-          <div class="mt-2">
-            <label for="rating" class="block text-gray-700">Rating (1 to 5)</label>
-            <input type="number" id="rating" min="1" max="5" class="border-2 border-gray-300 rounded-lg p-2 w-full" required>
-          </div>
-          <div class="mt-2">
-            <label for="comment" class="block text-gray-700">Comment</label>
-            <textarea id="comment" class="border-2 border-gray-300 rounded-lg p-2 w-full" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg mt-4">Submit Review</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <script src="script.js"></script>
-  <script src="foodDetails.js"></script>
 </body>
+
 </html>

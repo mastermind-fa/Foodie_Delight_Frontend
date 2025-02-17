@@ -1,104 +1,151 @@
-const CART_API_URL = "https://foodie-delight-backend-eta.vercel.app/api/cart/";
+const apiUrl = "https://you-fashion-backend.vercel.app/api/cart/";
+const token = localStorage.getItem("token"); // Retrieve token from localStorage
 
-// Function to fetch and display cart items
-async function fetchCart() {
-    const response = await fetch('https://foodie-delight-backend-eta.vercel.app/api/cart/', {
-        method: 'GET',
-        headers: {
-            'Authorization': `Token ${localStorage.getItem('token')}`, // Replace with token handling if needed
-        },
+// Fetch cart items from the API
+async function fetchCartItems() {
+  try {
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      headers: {
+        Authorization: `Token ${token}`,
+        "Content-Type": "application/json",
+      },
     });
 
-    if (response.ok) {
-        const products = await response.json();
-        displayCart(products);
-        // calculateTotalPrice(products);
-    } else {
-        alert('Failed to fetch cart products.');
+    if (!response.ok) {
+      throw new Error("Failed to fetch cart items");
     }
+
+    const cartItems = await response.json();
+    renderCartItems(cartItems);
+    calculateTotalAmount(cartItems);
+  } catch (error) {
+    console.error("Error fetching cart items:", error);
+  }
 }
 
-// Function to display cart items
-function displayCart(cartItems) {
-    const cartContainer = document.getElementById("cart-items");
-    cartContainer.innerHTML = "";
+// Render cart items in the table
+function renderCartItems(cartItems) {
+  const tbody = document.querySelector("tbody");
+  tbody.innerHTML = ""; // Clear existing items
 
-    let totalCost = 0;
-
-    if (cartItems.length === 0) {
-        cartContainer.innerHTML = `<p class="text-gray-500 text-center">Your cart is empty.</p>`;
-        document.getElementById("total-cost").textContent = "0.00";
-        return;
-    }
-
-    cartItems.forEach(item => {
-        totalCost += parseFloat(item.food_item.price) * item.quantity;
-
-        const cartItem = document.createElement("div");
-        cartItem.classList.add("flex", "items-center", "justify-between", "border-b", "pb-4");
-
-        cartItem.innerHTML = `
-            <div class="flex items-center space-x-4">
-                <img src="https://foodie-delight-backend-eta.vercel.app${item.food_item.image}" alt="${item.food_item.name}" class="w-16 h-16 rounded-lg">
-                <div>
-                    <h3 class="text-lg font-semibold">${item.food_item.name}</h3>
-                    <p class="text-gray-600">${item.food_item.price} BDT x ${item.quantity}</p>
-                </div>
-            </div>
-            <button onclick="removeFromCart(${item.id})" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700">
-                Remove
-            </button>
+  cartItems.forEach((item) => {
+    const row = document.createElement("tr");
+    row.className = "border-b hover:bg-gray-100";
+    row.innerHTML = `
+            <td class="p-3">
+                <img src="https://you-fashion-backend.vercel.app${item.food_item.image}" alt="${
+      item.food_item.name
+    }" class="w-16 rounded">
+            </td>
+            <td class="p-3">${item.food_item.name}</td>
+            <td class="p-3">$${item.food_item.price}</td>
+            <td class="p-3 flex items-center gap-2">
+                <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" onclick="updateQuantity(${
+                  item.id
+                }, ${item.quantity - 1})">-</button>
+                <span class="px-3">${item.quantity}</span>
+                <button class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600" onclick="updateQuantity(${
+                  item.id
+                }, ${item.quantity + 1})">+</button>
+            </td>
+            <td class="p-3">$${(
+              parseFloat(item.food_item.price) * item.quantity
+            ).toFixed(2)}</td>
+            <td class="p-3">
+                <button class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700" onclick="removeItem(${
+                  item.id
+                })">Remove</button>
+            </td>
         `;
-
-        cartContainer.appendChild(cartItem);
-    });
-
-    document.getElementById("total-cost").textContent = totalCost.toFixed(2);
+    tbody.appendChild(row);
+  });
 }
 
-// Function to remove item from cart
-async function removeFromCart(cartItemId) {
-    try {
-        const response = await fetch(`${CART_API_URL}${cartItemId}/`, {
-            method: "DELETE",
-            headers: {
-                'Authorization': `Token ${localStorage.getItem('token')}`,
-              },
-        });
-        
+// Update item quantity
+async function updateQuantity(itemId, newQuantity) {
+  try {
+    const response = await fetch(`${apiUrl}${itemId}/`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Token ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ quantity: newQuantity }),
+    });
 
-        if (response.ok) {
-            fetchCart();  // Refresh cart after removal
-        } else {
-            console.error("Failed to remove item from cart");
-        }
-    } catch (error) {
-        console.error("Error removing item:", error);
+    if (!response.ok) {
+      throw new Error("Failed to update quantity");
     }
+
+    fetchCartItems(); // Refresh the cart items
+  } catch (error) {
+    console.error("Error updating quantity:", error);
+  }
 }
 
-// Function to handle checkout
-async function handleCheckout() {
-    const response = await fetch('https://foodie-delight-backend-eta.vercel.app/api/checkout/', {
-        method: 'POST',
-        headers: {
-            'Authorization': `Token ${localStorage.getItem('token')}`,
-            'Content-Type': 'application/json',
-        },
+// Remove item from the cart
+async function removeItem(itemId) {
+  try {
+    const response = await fetch(`${apiUrl}${itemId}/`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${token}`,
+        "Content-Type": "application/json",
+      },
     });
+
+    if (!response.ok) {
+      throw new Error("Failed to remove item");
+    }
+
+    fetchCartItems(); // Refresh the cart items
+  } catch (error) {
+    console.error("Error removing item:", error);
+  }
+}
+
+// Calculate and display the total amount
+function calculateTotalAmount(cartItems) {
+  const totalAmount = cartItems.reduce((total, item) => {
+    return total + parseFloat(item.food_item.price) * item.quantity;
+  }, 0);
+  document.querySelector(
+    ".text-xl.font-bold.text-green-600"
+  ).textContent = `$${totalAmount.toFixed(2)}`;
+}
+
+// Handle checkout
+async function handleCheckout() {
+  try {
+    const response = await fetch(
+      "https://you-fashion-backend.vercel.app/payment/create_payment/",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (response.ok) {
-        alert('Order placed successfully!');
-        window.location.href = 'orders.html';  // Redirect to orders page
+      const data = await response.json();
+      // Redirect to SSLCommerz payment gateway
+      window.location.href = data.url;
     } else {
-        const data = await response.json();
-        alert(`Failed to place order: ${data.error || 'Unknown error'}`);
+      alert("Failed to initiate checkout. Please try again.");
     }
+  } catch (error) {
+    console.error("Error during checkout:", error);
+    alert("Failed to place order. Please try again.");
+  }
 }
 
+// Attach event listener to the "Proceed to Checkout" button
+document
+  .querySelector(".bg-blue-500")
+  .addEventListener("click", handleCheckout);
 
-// Event Listener for Checkout Button
-document.getElementById("checkout-btn").addEventListener("click", handleCheckout);
-
-// Fetch cart items on page load
-fetchCart();
+// Initialize the cart when the page loads
+document.addEventListener("DOMContentLoaded", fetchCartItems);
