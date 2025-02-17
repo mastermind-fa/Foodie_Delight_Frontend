@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const categoriesContainer = document.querySelector('.flex.justify-center.gap-4.mt-6');
     const foodItemsContainer = document.querySelector('.container.mx-auto.py-10 .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4.gap-6.mt-8');
     const specialItemsContainer = document.querySelector('.container.mx-auto.py-10.mt-3 .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4.gap-6.mt-8');
-    const apiBaseUrl = 'https://foodie-delight-backend-eta.vercel.app//api';
+    const apiBaseUrl = 'https://foodie-delight-backend-eta.vercel.appapi';
 
     // Fetch categories and food items
     async function fetchCategories() {
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
             card.className = 'bg-white p-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-2';
             card.innerHTML = `
                 <a href="javascript:void(0);" onclick="viewDetails(${food.id})">
-                    <img src="https://foodie-delight-backend-eta.vercel.app/${food.image}" alt="${food.name}" class="w-full rounded-md cursor-pointer">
+                    <img src="https://foodie-delight-backend-eta.vercel.app${food.image}" alt="${food.name}" class="w-full rounded-md cursor-pointer">
                 </a>
                 <h3 class="text-xl font-semibold mt-4">${food.name}</h3>
                 <p class="text-green-600 font-medium">4.8/5 Excellent (1214 reviews)</p>

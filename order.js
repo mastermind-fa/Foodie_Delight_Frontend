@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ordersContainer = document.getElementById("orders-container");
 
     try {
-        const response = await fetch("https://foodie-delight-backend-eta.vercel.app//api/orders/", {
+        const response = await fetch("https://foodie-delight-backend-eta.vercel.appapi/orders/", {
             method: "GET",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             let itemsHTML = order.items.map(item => `
                 <div class="flex items-center space-x-4 border-b pb-4">
-                    <img src="https://foodie-delight-backend-eta.vercel.app/${item.food_item.image}" alt="${item.food_item.name}" class="w-16 h-16 object-cover rounded">
+                    <img src="https://foodie-delight-backend-eta.vercel.app${item.food_item.image}" alt="${item.food_item.name}" class="w-16 h-16 object-cover rounded">
                     <div>
                         <h3 class="text-lg font-semibold">${item.food_item.name}</h3>
                         <p class="text-sm text-gray-600">${item.food_item.description}</p>

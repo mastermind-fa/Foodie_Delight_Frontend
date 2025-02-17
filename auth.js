@@ -35,7 +35,7 @@ async function handleRegistration(event) {
     }
   
     try {
-      const response = await fetch("https://foodie-delight-backend-eta.vercel.app//customer/register/", {
+      const response = await fetch("https://foodie-delight-backend-eta.vercel.appcustomer/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +66,7 @@ async function handleRegistration(event) {
     const password = document.getElementById("password").value;
 
     try {
-        const response = await fetch("https://foodie-delight-backend-eta.vercel.app//customer/login/", {
+        const response = await fetch("https://foodie-delight-backend-eta.vercel.appcustomer/login/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

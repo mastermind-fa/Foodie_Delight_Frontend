@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     try {
-      const response = await fetch(`https://foodie-delight-backend-eta.vercel.app//customer/details/${userId}/`, {
+      const response = await fetch(`https://foodie-delight-backend-eta.vercel.appcustomer/details/${userId}/`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
