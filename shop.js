@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const categoriesContainer = document.querySelector('.flex.justify-center.gap-4.mt-6');
     const foodItemsContainer = document.querySelector('.container.mx-auto.py-10 .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4.gap-6.mt-8');
     const specialItemsContainer = document.querySelector('.container.mx-auto.py-10.mt-3 .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4.gap-6.mt-8');
-    const apiBaseUrl = 'https://foodie-delight-backend-eta.vercel.appapi';
+    const apiBaseUrl = 'https://foodie-delight-backend-eta.vercel.app/api';
 
     // Fetch categories and food items
     async function fetchCategories() {

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM fully loaded and parsed');
 
-    const apiBaseUrl = 'https://foodie-delight-backend-eta.vercel.appapi';
+    const apiBaseUrl = 'https://foodie-delight-backend-eta.vercel.app/api';
     const urlParams = new URLSearchParams(window.location.search);
     const foodId = urlParams.get('id'); // Get the food ID from the URL
 

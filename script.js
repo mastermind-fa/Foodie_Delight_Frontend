@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const apiUrl = "https://foodie-delight-backend-eta.vercel.appapi/food-items/";
+  const apiUrl = "https://foodie-delight-backend-eta.vercel.app/api/food-items/";
   const swiperContainer = document.querySelector(".mySwiper");
 
   fetch(apiUrl)
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const apiUrl = "https://foodie-delight-backend-eta.vercel.appapi/food-items/";
+  const apiUrl = "https://foodie-delight-backend-eta.vercel.app/api/food-items/";
   const swiperContainer = document.querySelector(".mySwiper2");
 
   fetch(apiUrl)
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const apiUrl = "https://foodie-delight-backend-eta.vercel.appapi/food-items/";
+  const apiUrl = "https://foodie-delight-backend-eta.vercel.app/api/food-items/";
   const swiperContainer = document.querySelector(".mySwiper3");
 
   fetch(apiUrl)

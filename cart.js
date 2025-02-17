@@ -1,4 +1,4 @@
-const apiUrl = "https://foodie-delight-backend-eta.vercel.appapi/cart/";
+const apiUrl = "https://foodie-delight-backend-eta.vercel.app/api/cart/";
 const token = localStorage.getItem("token"); // Retrieve token from localStorage
 
 // Fetch cart items from the API
@@ -119,7 +119,7 @@ function calculateTotalAmount(cartItems) {
 async function handleCheckout() {
   try {
     const response = await fetch(
-      "https://foodie-delight-backend-eta.vercel.apppayment/create_payment/",
+      "https://foodie-delight-backend-eta.vercel.app/payment/create_payment/",
       {
         method: "POST",
         headers: {

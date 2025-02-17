@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ordersContainer = document.getElementById("orders-container");
 
     try {
-        const response = await fetch("https://foodie-delight-backend-eta.vercel.appapi/orders/", {
+        const response = await fetch("https://foodie-delight-backend-eta.vercel.app/api/orders/", {
             method: "GET",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("token")}`,
