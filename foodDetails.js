@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const token = localStorage.getItem('token');
         if (!token) {
             alert('Please log in to submit a review.');
+            window.location.href = 'login.html';
             return;
         }
 
@@ -207,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const token = localStorage.getItem('token');
         if (!token) {
             alert('Please log in to add items to your cart.');
+            window.location.href = 'login.html';
             return;
         }
 
