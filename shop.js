@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
             card.className = 'bg-white p-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-2';
             card.innerHTML = `
                 <a href="javascript:void(0);" onclick="viewDetails(${food.id})">
-                    <img src="https://foodie-delight-backend-eta.vercel.app${food.image}" alt="${food.name}" class="w-full rounded-md cursor-pointer">
+                    <img src="https://foodie-delight-backend-eta.vercel.app${food.image}" alt="${food.name}" class="w-full h-56 object-cover rounded-md cursor-pointer">
                 </a>
                 <h3 class="text-xl font-semibold mt-4">${food.name}</h3>
                 <p class="text-green-600 font-medium">4.8/5 Excellent (1214 reviews)</p>

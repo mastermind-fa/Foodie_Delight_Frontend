@@ -249,6 +249,43 @@ document.addEventListener('DOMContentLoaded', function () {
         submitReviewButton.addEventListener('click', submitReview);
     }
 
+    async function fetchSimilarFoodItems(category) {
+        try {
+            const response = await fetch(`${apiBaseUrl}/categories/${category}/food-items/`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch similar food items');
+            }
+            const data = await response.json();
+            console.log('Fetched similar food items:', data);
+            return data;
+        } catch (error) {
+            console.error('Error fetching similar food items:', error);
+            return [];
+        }
+    }
+
+    function renderSimilarFoodItems(foods) {
+        // const similarFoodContainer = document.querySelector('.grid.grid-cols-1.md\:grid-cols-3.lg\:grid-cols-4.gap-6.mt-6');
+        const similarFoodContainer = document.getElementById('similar-foods');
+        similarFoodContainer.innerHTML = '';
+
+        foods.forEach(food => {
+            const foodCard = document.createElement('div');
+            foodCard.className = 'bg-white p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300';
+            foodCard.innerHTML = `
+                <img src="https://foodie-delight-backend-eta.vercel.app${food.image}" alt="${food.name}" class="w-full h-48 object-cover rounded-md cursor-pointer">
+                <h4 class="text-lg font-semibold mt-3">${food.name}</h4>
+                <p class="text-green-600 font-medium">$${food.price}</p>
+                <div class="flex items-center gap-2 mt-2">
+                    <label for="similar-quantity-${food.id}" class="text-gray-700">Quantity:</label>
+                    <input type="number" id="similar-quantity-${food.id}" name="similar-quantity" min="1" value="1" class="w-16 p-2 border rounded-md">
+                </div>
+                <button class="bg-green-500 text-white px-6 py-2 mt-2 rounded-lg hover:bg-green-600 transition" onclick="addToCart(${food.id})">Add to Cart</button>
+            `;
+            similarFoodContainer.appendChild(foodCard);
+        });
+    }
+
     const addToCartButton = document.querySelector('button.bg-green-500');
     if (addToCartButton) {
         addToCartButton.addEventListener('click', addToCart);
@@ -259,6 +296,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const food = await fetchFoodItemDetails(foodId);
         if (food) {
             renderFoodItemDetails(food);
+            const similarFoods = await fetchSimilarFoodItems(food.category.slug);
+            renderSimilarFoodItems(similarFoods);
 
             // Fetch and render reviews
             const reviews = await fetchFoodItemReviews(foodId);

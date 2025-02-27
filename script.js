@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
                             <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
                         </div>
-                        <p class="text-left text-[18px] font-[500] text-[#777]">${item.description}</p>
+                        <p class="text-left text-[18px] font-[500] text-[#777]">${item.description.slice(0,50)}</p>
                         <button class="mt-3 rounded-full bg-[#fbb200] px-5 uppercase py-3 text-white" onclick="window.location.href='foodDetails.html?id=${item.id}'">
                             <i class="fa-brands hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-opencart"></i>
                             <span class="ps-1.5 font-semibold">Order Now</span>
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
                             <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
                         </div>
-                        <p class="text-left text-[18px] font-[500] text-[#777]">${item.description}</p>
+                        <p class="text-left text-[18px] font-[500] text-[#777]">${item.description.slice(0,50)}</p>
                         <button class="mt-3 rounded-full bg-[#fbb200] px-5 uppercase py-3 text-white" onclick="window.location.href='foodDetails.html?id=${item.id}'">
                             <i class="fa-brands hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-opencart"></i>
                             <span class="ps-1.5 font-semibold">Order Now</span>
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
                             <i class="fa-solid fa-star text-[#fbb200] text-[14px]"></i>
                         </div>
-                        <p class="text-left text-[18px] font-[500] text-[#777]">${item.description}</p>
+                        <p class="text-left text-[18px] font-[500] text-[#777]">${item.description.slice(0,50)}</p>
                         <button class="mt-3 rounded-full bg-[#fbb200] px-5 uppercase py-3 text-white" onclick="window.location.href='foodDetails.html?id=${item.id}'">
                             <i class="fa-brands hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-opencart"></i>
                             <span class="ps-1.5 font-semibold">Order Now</span>
