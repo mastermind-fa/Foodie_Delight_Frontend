@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Foodie Delight</title>
+</head>
+<body>
+    <nav class="bg-white shadow-md p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold">Foodie Delight</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-gray-600">Menu</a>
+                <a href="#" class="hover:text-gray-600">Favourite</a>
+                <a href="#" class="hover:text-gray-600">About</a>
+                <a href="#" class="hover:text-gray-600">Contact Us</a>
+            </div>
+
+            <!-- Icons & Authentication -->
+            <div class="flex items-center space-x-4">
+                <!-- Cart & Profile (Only shown if logged in) -->
+                <div id="authIcons" class="hidden items-center space-x-4">
+                    <div class="relative">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m-2.4 8h16m-8 4a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                        <span class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs px-1 rounded-full">0</span>
+                    </div>
+                    
+                    <div class="relative">
+                        <button onclick="toggleDropdown()" class="focus:outline-none">
+                            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A4 4 0 018 16h8a4 4 0 012.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </button>
+                        <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Dashboard</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMenu()" class="md:hidden focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
+            <a href="#" class="block px-4 py-2">Menu</a>
+            <a href="#" class="block px-4 py-2">Favourite</a>
+            <a href="#" class="block px-4 py-2">About</a>
+            <a href="#" class="block px-4 py-2">Contact Us</a>
+            <div id="mobileAuth" class="space-y-2"></div>
+        </div>
+    </nav>
+
+    <script>
+        let isLoggedIn = false; // Change this to true if user is logged in
+
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+        
+        function toggleDropdown() {
+            document.getElementById('dropdownMenu').classList.toggle('hidden');
+        }
+
+        function updateAuthState() {
+            if (isLoggedIn) {
+                document.getElementById('authIcons').classList.remove('hidden');
+                document.getElementById('mobileAuth').innerHTML = '<a href="#" class="block px-4 py-2">Dashboard</a><a href="#" class="block px-4 py-2">Logout</a>';
+            } else {
+                document.getElementById('authIcons').classList.add('hidden');
+                document.getElementById('mobileAuth').innerHTML = '<a href="#" class="block px-4 py-2">Sign In</a><a href="#" class="block px-4 py-2 bg-blue-500 text-white rounded-lg">Register</a>';
+            }
+        }
+
+        updateAuthState();
+    </script>
+</body>
+</html>

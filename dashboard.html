@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Profile - Foodie Delight</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Foodie Delight - Admin Dashboard</title>
 </head>
+
 <body class="bg-gray-100">
 
     <div class="flex min-h-screen">
@@ -81,36 +84,61 @@
                 <button id="toggleSidebar" class="md:hidden text-gray-600 hover:text-gray-900">
                     ☰
                 </button>
-                <h2 class="text-xl font-bold">Profile</h2>
+                <h2 class="text-xl font-bold">Dashboard</h2>
                 <div class="flex items-center space-x-4">
-                    <button onclick="logout()" class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">Logout</button>
+                    <div class="relative">
+                        <button id="userRoleButton" class="bg-gray-300 px-3 py-1 rounded-md font-bold">Admin</button>
+                        <ul id="userRoleDropdown" class="hidden absolute right-0 mt-2 bg-white shadow-md rounded-md">
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Profile Details -->
-            <div class="mt-6 bg-white shadow-md rounded-md p-6">
-                <h3 class="text-lg font-bold mb-4">Profile Information</h3>
-                <div class="space-y-4">
-                    <div class="flex items-center">
-                        <span class="w-24 font-medium">Username:</span>
-                        <span id="username" class="text-gray-700">Loading...</span>
+            <!-- Stats Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                <div class="bg-orange-500 p-6 rounded-md text-white">
+                    <h3 class="text-xl font-bold">7</h3>
+                    <p>Customers</p>
+                </div>
+                <div class="bg-blue-500 p-6 rounded-md text-white">
+                    <h3 class="text-xl font-bold">11</h3>
+                    <p>Total Menus</p>
+                </div>
+                <div class="bg-pink-500 p-6 rounded-md text-white">
+                    <h3 class="text-xl font-bold">10</h3>
+                    <p>Total Orders</p>
+                </div>
+                <div class="bg-purple-500 p-6 rounded-md text-white">
+                    <h3 class="text-xl font-bold">$4500.75</h3>
+                    <p>Total Sales</p>
+                </div>
+            </div>
+
+            <!-- Chart & Recent Menus -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                <!-- Chart Section -->
+                <div class="bg-white p-6 shadow-md rounded-md">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold">Monthly Sales Data</h3>
+                        <select id="yearFilter" class="p-2 border rounded-md">
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                        </select>
                     </div>
-                    <div class="flex items-center">
-                        <span class="w-24 font-medium">First Name:</span>
-                        <span id="firstName" class="text-gray-700">Loading...</span>
+                    <canvas id="salesChart"></canvas>
+                </div>
+
+                <!-- Recent Menus Section -->
+                <div class="bg-white p-6 shadow-md rounded-md">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold">Recent Menus</h3>
+                        <a href="allMenu.html" class="text-blue-500 hover:underline">View All Menus</a>
                     </div>
-                    <div class="flex items-center">
-                        <span class="w-24 font-medium">Last Name:</span>
-                        <span id="lastName" class="text-gray-700">Loading...</span>
-                    </div>
-                    <div class="flex items-center">
-                        <span class="w-24 font-medium">Email:</span>
-                        <span id="email" class="text-gray-700">Loading...</span>
-                    </div>
-                    <div class="flex items-center">
-                        <span class="w-24 font-medium">Role:</span>
-                        <span id="role" class="text-gray-700">Loading...</span>
-                    </div>
+                    <ul id="recentMenus">
+                        <!-- Recent menus will be populated here -->
+                    </ul>
                 </div>
             </div>
         </main>
@@ -119,16 +147,16 @@
     <!-- JavaScript for Interactivity -->
     <script>
         // Toggle Sidebar on Mobile
-        const toggleSidebar = document.getElementById('toggleSidebar');
-        const closeSidebar = document.getElementById('closeSidebar');
-        const sidebar = document.getElementById('sidebar');
+        const toggleSidebar = document.getElementById("toggleSidebar");
+        const closeSidebar = document.getElementById("closeSidebar");
+        const sidebar = document.getElementById("sidebar");
 
-        toggleSidebar.addEventListener('click', () => {
-            sidebar.classList.toggle('-translate-x-full');
+        toggleSidebar.addEventListener("click", () => {
+            sidebar.classList.toggle("-translate-x-full");
         });
 
-        closeSidebar.addEventListener('click', () => {
-            sidebar.classList.add('-translate-x-full');
+        closeSidebar.addEventListener("click", () => {
+            sidebar.classList.add("-translate-x-full");
         });
 
         // Toggle Dropdowns
@@ -136,30 +164,16 @@
             const dropdown = document.getElementById(`${type}Dropdown`);
             const icon = document.getElementById(`${type}Icon`);
 
-            dropdown.classList.toggle('hidden');
-            icon.textContent = dropdown.classList.contains('hidden') ? '▸' : '▾';
+            dropdown.classList.toggle("hidden");
+            icon.textContent = dropdown.classList.contains("hidden") ? "▸" : "▾";
         }
+        // User Role Dropdown
+        const userRoleButton = document.getElementById("userRoleButton");
+        const userRoleDropdown = document.getElementById("userRoleDropdown");
 
-        // Fetch Profile Details
-        async function fetchProfileDetails() {
-            try {
-                const response = await fetch('https://foodie-delight-backend-eta.vercel.app/customer/details/1/', {
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`, // Add your authorization token
-                    },
-                });
-                const profile = await response.json();
-
-                // Populate profile details
-                document.getElementById('username').textContent = profile.username;
-                document.getElementById('firstName').textContent = profile.first_name || 'N/A';
-                document.getElementById('lastName').textContent = profile.last_name || 'N/A';
-                document.getElementById('email').textContent = profile.email;
-                document.getElementById('role').textContent = profile.role;
-            } catch (error) {
-                console.error('Error fetching profile details:', error);
-            }
-        }
+        userRoleButton.addEventListener("click", () => {
+            userRoleDropdown.classList.toggle("hidden");
+        });
 
         // Logout Function
         function logout() {
@@ -171,8 +185,30 @@
             alert("Logged out successfully!");
             window.location.href = "login.html"; // Redirect to login page
         }
-        // Fetch profile details on page load
-        fetchProfileDetails();
+        // Check User Role and Update UI
+        function checkUserRole() {
+            const isAdmin = localStorage.getItem("isAdmin") === "true"; // Convert string to boolean
+            const username = localStorage.getItem("username");
+
+            if (username) {
+                userRoleButton.textContent = username; // Show username
+            } else {
+                userRoleButton.textContent = isAdmin ? "Admin" : "Customer";
+            }
+
+            if (!isAdmin) {
+                const menuOption = document.getElementById("menu-option").parentElement;
+                menuOption.style.display = "none"; // Hide the Menu section for non-admin users
+                const allOrder = document.getElementById("all-order");
+                allOrder.style.display = "none";
+            }
+        }
+
+        
+
+        checkUserRole();
     </script>
+    <script src="dashboard.js"></script>
 </body>
+
 </html>

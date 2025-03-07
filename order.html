@@ -1,276 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foodie Delight | Shopping Cart</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Orders - Foodie Delight</title>
 </head>
+
 <body class="bg-gray-100">
-
-    <!-- Navbar Start -->
-    <header
-      id="nav-main"
-      class="w-[100%] bg-white z-[9999] sticky duration-500 top-0 left-0"
-    >
-      <nav
-        class="lg:w-[95%] mx-auto py-[10px] flex justify-between items-center"
-      >
-      <a href="index.html"><h2 class="text-3xl font-bold text-[#f22e3e] font-serif">Foodie Delight</h2></a>
-        <div class="flex gap-10">
-          <ul
-            class="hidden lg:flex gap-[3.5rem] font-[600] z-999 text-[18px] uppercase"
-          >
-            <li class="border-b-2 pb-2 border-[#f22e3e]">
-              <a href="/index.html" class="cursor-pointer text-[#f22e3e]"
-                >Home</a
-              >
-            </li>
-            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
-              <a href="/shop.html" class="hover:text-[#f22e3e]">Shop</a>
-            </li>
-            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
-              <a href="" class="hover:text-[#f22e3e]">About</a>
-            </li>
-            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
-              <a href="" class="hover:text-[#f22e3e]">Blog</a>
-            </li>
-            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
-              <a href="" class="hover:text-[#f22e3e]">Contact</a>
-            </li>
-            <li class="hover:border-b-2 pb-2 border-[#f22e3e]">
-              <a href="profile.html" class="hover:text-[#f22e3e]">Account</a>
-            </li>
-          </ul>
-          <!-- Mobile Menu Items Start -->
-          <div
-            id="nav-items"
-            class="absolute hidden top-0 left-0 w-full h-[100vh] bg-white"
-          >
-            <div class="py-3 flex justify-between pe-1 border-b-2">
-              <a href="index.html"><h2 class="text-3xl font-bold text-[#f22e3e] font-serif">Foodie Delight</h2></a>
-              <button
-                id="menu-close"
-                class="text-[30px] cursor-pointer font-bold"
-              >
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-            <ul
-              class="flex h-[100%] w-full mt-16 px-4 flex-col z-999 font-[600] gap-10 text-[18px] uppercase"
-            >
-              <li>
-                <a href="/index.html" class="cursor-pointer text-[#f22e3e]"
-                  >Home</a
-                >
-              </li>
-              <li>
-                <a href="/shop.html" class="">Shop</a>
-              </li>
-              <li>
-                <a href="" class="">About</a>
-              </li>
-              <li>
-                <a href="" class="">Blog</a>
-              </li>
-              <li>
-                <a href="">Contact</a>
-              </li>
-              <li>
-                <a href="/profile.html">Account</a>
-              </li>
-            </ul>
-          </div>
-          <!-- Mobile Menu Items End -->
-          <!-- Search Box Start -->
-          <div
-            id="search-trigger"
-            class="absolute hidden top-0 flex-col left-0 flex py-20 items-center w-full bg-[#fbb200] h-[100vh]"
-          >
-            <div class="p-3 border flex gap-3 rounded-full items-center">
-              <input
-                type="text"
-                class="py-2 bg-transparent text-white outline-none w-[260px] px-2"
-                placeholder="What are you looking for?"
-                name=""
-                id=""
-              />
-              <i
-                class="fa-solid text-white cursor-pointer text-[20px] fa-search"
-              ></i>
-            </div>
-            <div class="py-7">
-              <button
-                id="search-close"
-                class="text-[22px] cursor-pointer border-2 border-white text-white px-3 py-1 rounded-full font-bold"
-              >
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-          </div>
-          <!-- Search Box End -->
-          <div class="flex mt-1 gap-7">
-            <i
-              id="search-open"
-              class="fa-solid hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-magnifying-glass"
-            ></i>
-            <a href="cart.html"
-              ><i
-                class="fa-brands hover:text-[#f22e3e] text-[24px] lg:text-[18px] cursor-pointer fa-opencart"
-              ></i
-            ></a>
-          </div>
-          <div class="block text-[24px] lg:hidden">
-            <i
-              id="menu-open"
-              class="fa-solid hover:text-[#f22e3e] pr-2 text-black fa-bars cursor-pointer"
-            ></i>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <!-- Navbar Start -->
-
-    <!-- Order Start -->
-
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Your Orders</h1>
-        <div id="orders-container" class="space-y-6"></div>
-    </div>
-
-
-    <!-- Footer Start -->
-    <footer class="w-full">
-        <div class="bg-[#fffaed] py-16 w-full">
-          <div class="w-[95%] mx-auto">
-            <div
-              class="md:flex w-full gap-5 justify-between font-semibold tracking-[1px]"
-            >
-              <div class="md:w-[25%]  mb-10 md:mb-0 w-full">
-                <h6 class="text-[18px] mb-5 uppercase leading-[30px]">
-                  Information
-                </h6>
-                <ul class="flex flex-col text-[#777777] gap-5">
-                  <li><a href="">Home</a></li>
-                  <li><a href="">Blog</a></li>
-                  <li><a href="">About Us</a></li>
-                  <li><a href="">Menu</a></li>
-                  <li><a href="">Contact us</a></li>
-                </ul>
-              </div>
-              <div class="md:w-[25%] mb-10 md:mb-0 w-full">
-                <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
-                  Top Items
-                </h6>
-                <ul class="flex flex-col text-[#777777] gap-5">
-                  <li><a href="">Pepperoni</a></li>
-                  <li><a href="">Swiss Mushroom</a></li>
-                  <li><a href="">Barbeque Chicken</a></li>
-                  <li><a href="">Vegetarian</a></li>
-                  <li><a href="">Ham & Cheese</a></li>
-                </ul>
-              </div>
-              <div class="md:w-[25%] mb-10 md:mb-0 w-full">
-                <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
-                  Others
-                </h6>
-                <ul class="flex flex-col text-[#777777] gap-5">
-                  <li><a href="">Checkout</a></li>
-                  <li><a href="">Cart</a></li>
-                  <li><a href="">Product</a></li>
-                  <li><a href="">Locations</a></li>
-                  <li><a href="">Legal</a></li>
-                </ul>
-              </div>
-              <div class="md:w-[25%] mb-2  md:mb-0 w-full">
-                <h6 class="text-[18px] uppercase mb-5 leading-[30px]">
-                  Social Media
-                </h6>
-                <div class="flex my-6 gap-4">
-                  <a href="">
-                    <img
-                      src="images/footer/facebook.png"
-                      class="w-[40px] h-[40px]"
-                      alt=""
-                  /></a>
-                  <a href="">
-                    <img
-                      src="images/footer/pinterest.png"
-                      class="w-[40px] h-[40px]"
-                      alt=""
-                  /></a>
-                  <a href="">
-                    <img
-                      src="images/footer/twitter.png"
-                      class="w-[40px] h-[40px]"
-                      alt=""
-                  /></a>
-                  <a href="">
-                    <img
-                      src="images/footer/instagram.png"
-                      class="w-[40px] h-[40px]"
-                      alt=""
-                    />
-                  </a>
-                </div>
-                <p class="text-[#777777]">
-                  Signup and get exclusive offers and coupon codes
-                </p>
-                <button
-                  class="uppercase text-white my-4 md:my-7 px-5 py-3 text-[16px] md:text-[18px] rounded-full bg-[#fbb200]"
-                >
-                  Sign Up
-                </button>
-              </div>
-            </div>
-            <div class="py-3 md:py-5 md:flex">
-              <div
-                class="flex w-full mb-5 md:mb-0 text-[14px] md:text-[16px] md:w-[75%] font-semibold text-[#777777] items-center"
-              >
-                <a href="" class="md:pe-6 pe-2 border-r border-[#777777]"
-                  >Privacy Policy</a
-                >
-                <a href="" class="md:px-6 px-2 border-r border-[#777777]"
-                  >Refund Policy</a
-                >
-                <a href="" class="md:px-6 px-2 border-r border-[#777777]"
-                  >Cookie Policy</a
-                >
-                <a href="" class="md:px-6 px-2">Terms & Conditions</a>
-              </div>
-              <div class="flex md:w-[25%] w-full gap-2 lg:gap-4">
-                <a href="">
-                  <img src="images/footer/app-stor.png" class="h-[40px]" alt=""
-                /></a>
-                <a href="">
-                  <img
-                    src="images/footer/google-play.png"
-                    class="h-[40px]"
-                    alt=""
-                  />
+  <div class="flex min-h-screen">
+    <!-- Sidebar (Hidden on Mobile) -->
+    <aside id="sidebar"
+            class="w-64 bg-white shadow-md p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 fixed md:relative z-50">
+            <div class="flex justify-between items-center mb-6">
+                <a href="index.html">
+                    <h2 class="text-3xl font-bold text-[#f22e3e] font-serif">Foodie Delight</h2>
                 </a>
-              </div>
+                <button id="closeSidebar" class="md:hidden text-gray-600 hover:text-gray-900">
+                    ✕
+                </button>
             </div>
-          </div>
+            <nav>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="dashboard.html" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-md">
+                            <span>📊</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="group relative">
+                            <button onclick="toggleDropdown('menu')"
+                                class="flex items-center justify-between w-full p-2 hover:bg-gray-200 rounded-md">
+                                <div class="flex items-center space-x-2" id="menu-option">
+                                    <span>📋</span>
+                                    <span>Menu</span>
+                                </div>
+                                <span id="menuIcon">▸</span>
+                            </button>
+                            <ul id="menuDropdown" class="hidden pl-6 mt-2 space-y-2">
+                                <li><a href="allMenu.html" class="block p-2 hover:bg-gray-100 rounded-md">All Menus</a>
+                                </li>
+                                <li><a href="addMenu.html" class="block p-2 hover:bg-gray-100 rounded-md">Add Menu</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="group relative">
+                            <button onclick="toggleDropdown('orders')"
+                                class="flex items-center justify-between w-full p-2 hover:bg-gray-200 rounded-md">
+                                <div class="flex items-center space-x-2">
+                                    <span>🛒</span>
+                                    <span>Orders</span>
+                                </div>
+                                <span id="ordersIcon">▸</span>
+                            </button>
+                            <ul id="ordersDropdown" class="hidden pl-6 mt-2 space-y-2">
+                                <li><a href="order.html" class="block p-2 hover:bg-gray-100 rounded-md">Order
+                                        History</a></li>
+                                <li><a href="allOrders.html" class="block p-2 hover:bg-gray-100 rounded-md" id="all-order">All
+                                        Orders</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="profile.html" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-md">
+                            <span>👤</span>
+                            <span>View Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+      <div class="flex justify-between items-center bg-white p-4 shadow-md rounded-md">
+        <button id="toggleSidebar" class="md:hidden text-gray-600 hover:text-gray-900">☰</button>
+        <h2 class="text-xl font-bold">Your Orders</h2>
+        <div class="flex items-center space-x-4">
+          <div class="relative">
+            <button id="userRoleButton" class="bg-gray-300 px-3 py-1 rounded-md font-bold">Admin</button>
+            <ul id="userRoleDropdown" class="hidden absolute right-0 mt-2 bg-white shadow-md rounded-md">
+                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" onclick="logout()">Logout</a></li>
+            </ul>
         </div>
-        <div
-          class="p-5 md:p-10 text-center text-[14px] md:text-[18px] font-semibold"
-        >
-        <a href="">
-          © 2024 Foodie Delight. All Rights Reserved by
-          <a href="" class="text-[#f22e3e]">Farhana Alam</a></a>
+        </div>
       </div>
-        </div>
-      </footer>
-      <!-- Footer End -->
 
-      <script
-      src="https://kit.fontawesome.com/1da2bcf95c.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-    <script src="app.js"></script>
-    <script src="order.js"></script>
+      <!-- Orders Section -->
+      <div class="container mx-auto mt-6">
+        <div id="orders-container" class="space-y-6"></div>
+      </div>
+    </main>
+  </div>
 
+  <!-- JavaScript -->
+  <script src="order.js"></script>
+  <script>
+    // Toggle Sidebar on Mobile
+    const toggleSidebar = document.getElementById("toggleSidebar");
+    const closeSidebar = document.getElementById("closeSidebar");
+    const sidebar = document.getElementById("sidebar");
+
+    toggleSidebar.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+    });
+
+    closeSidebar.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+    });
+
+    // Toggle Dropdowns
+    function toggleDropdown(type) {
+        const dropdown = document.getElementById(`${type}Dropdown`);
+        const icon = document.getElementById(`${type}Icon`);
+
+        dropdown.classList.toggle("hidden");
+        icon.textContent = dropdown.classList.contains("hidden") ? "▸" : "▾";
+    }
+    // User Role Dropdown
+    const userRoleButton = document.getElementById("userRoleButton");
+    const userRoleDropdown = document.getElementById("userRoleDropdown");
+
+    userRoleButton.addEventListener("click", () => {
+        userRoleDropdown.classList.toggle("hidden");
+    });
+
+    // Logout Function
+    function logout() {
+        localStorage.removeItem("user_id");
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        localStorage.removeItem("isAuthenticated");
+        localStorage.removeItem("isAdmin");
+        alert("Logged out successfully!");
+        window.location.href = "login.html"; // Redirect to login page
+    }
+    // Check User Role and Update UI
+    function checkUserRole() {
+        const isAdmin = localStorage.getItem("isAdmin") === "true"; // Convert string to boolean
+        const username = localStorage.getItem("username");
+
+        if (username) {
+            userRoleButton.textContent = username; // Show username
+        } else {
+            userRoleButton.textContent = isAdmin ? "Admin" : "Customer";
+        }
+
+        if (!isAdmin) {
+            const menuOption = document.getElementById("menu-option").parentElement;
+            menuOption.style.display = "none"; // Hide the Menu section for non-admin users
+            const allOrder = document.getElementById("all-order");
+            allOrder.style.display = "none";
+        }
+    }
+
+    
+
+    checkUserRole();
+</script>
 </body>
+
 </html>
