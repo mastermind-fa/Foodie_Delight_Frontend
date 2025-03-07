@@ -142,8 +142,10 @@
 
         // Fetch Profile Details
         async function fetchProfileDetails() {
+            const userId = localStorage.getItem("user_id");
             try {
-                const response = await fetch('https://foodie-delight-backend-eta.vercel.app/customer/details/1/', {
+                const response = await fetch(`https://foodie-delight-backend-eta.vercel.app/customer/details/${userId}/`, {
+                    method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`, // Add your authorization token
                     },
