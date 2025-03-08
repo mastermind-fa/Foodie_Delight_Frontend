@@ -139,7 +139,11 @@
             dropdown.classList.toggle('hidden');
             icon.textContent = dropdown.classList.contains('hidden') ? '▸' : '▾';
         }
-
+        // Check if user is logged in
+        if (!localStorage.getItem('token')) {
+            alert("You are not logged in!");
+            window.location.href = "login.html"; // Redirect to login page
+        }
         // Fetch Profile Details
         async function fetchProfileDetails() {
             const userId = localStorage.getItem("user_id");
